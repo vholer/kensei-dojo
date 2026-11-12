@@ -8,6 +8,8 @@ params:
   branches:
     brno:
       city: "Brno"
+      country: "Česko"
+      lang: "cs"
       image: "/images/kensei/brno-city.jpg"
       text: "Česká pobočka klubu Kensei Dojo v Brne."
       items:
@@ -21,6 +23,8 @@ params:
         url: "/cs/kontakty-brno/"
     senec:
       city: "Senec"
+      country: "Slovensko"
+      lang: "sk"
       image: "/images/kensei/senec-city.jpg"
       text: "Klub okinawského karate Goju ryu a tradičného japonského šermu (kenjutsu) v Senci."
       items:

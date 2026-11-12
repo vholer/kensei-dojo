@@ -91,16 +91,13 @@ body.home {
     font-size: var(--kd-city);
 }
 
-// Three small red brush dots on the centre line between the cities
+// Three small red brush dots, centred in the space between the cities (space-between keeps both gaps equal)
 .home-split__ornament {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    flex-shrink: 0;
     width: 0.75em;
     height: 0.15em;
     color: $kd-vermilion;
     overflow: visible;
-    transform: translate(-50%, -50%);
 }
 
 // The city name is the link; a red underline shows on hover
@@ -120,6 +117,54 @@ body.home {
 
 .home-split .home-branch__city {
     font-size: var(--kd-city);
+}
+
+// Country under the city name, shown on hover or keyboard focus.
+// Out of the flow so the line does not move; aligned to the outer edge of each city.
+.home-split a.home-branch__link {
+    position: relative;
+}
+
+.home-branch__country {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: flex;
+    gap: 0.6em;
+    align-items: center;
+    margin-top: 0.45em;
+    color: rgba(#fff, 0.6);
+    font-size: clamp(0.75rem, 0.2em, 1rem);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(-0.25rem);
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+    pointer-events: none;
+}
+
+.home-branch__flag {
+    flex-shrink: 0;
+    width: 1.5em;
+    height: 1em;
+    border-radius: 1px;
+    box-shadow: 0 0 0 1px rgba(#fff, 0.2);
+}
+
+.home-branch--brno .home-branch__country {
+    right: 0;
+    left: auto;
+}
+
+.home-split a.home-branch__link:hover .home-branch__country,
+.home-split a.home-branch__link:focus-visible .home-branch__country {
+    opacity: 1;
+    transform: none;
 }
 
 .home-split a:focus-visible {
@@ -168,21 +213,15 @@ body.home {
         animation: kd-rise 0.7s $kd-ease 0.45s both;
     }
 
-    // Rises with the city names; the keyframe keeps the dots centred
-    @keyframes kd-rise-centred {
-        from {
-            opacity: 0;
-            transform: translate(-50%, calc(-50% + 1.25rem));
-        }
-    }
-
+    // Rises with the city names
     .home-split__ornament {
-        animation: kd-rise-centred 0.7s $kd-ease 0.45s both;
+        animation: kd-rise 0.7s $kd-ease 0.45s both;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .home-split a.home-branch__link {
+    .home-split a.home-branch__link,
+    .home-branch__country {
         transition: none;
     }
 }
@@ -247,6 +286,11 @@ a.lang-switch__link--current {
         min-width: 0;
     }
 
+    // a.navbar-brand outranks the 1.375rem rule in the dark-mode top bar block, which comes later
+    [data-bs-theme="dark"] .navbar a.navbar-brand {
+        font-size: 1.125rem;
+    }
+
     .navbar-brand span {
         overflow: hidden;
         text-overflow: ellipsis;
@@ -273,19 +317,13 @@ a.lang-switch__link--current {
         gap: 0.625rem;
         align-items: center;
         color: $kd-paper;
-        font-size: 1.0625rem;
-        font-weight: 500;
-        letter-spacing: 0.04em;
-
-        @include media-breakpoint-up(xl) {
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-        }
+        font-size: 1.375rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
     }
 
     .navbar .navbar-nav .nav-link {
         color: rgba($kd-paper, 0.78);
-        font-size: 0.9375rem;
         transition: color 0.2s ease;
     }
 
@@ -360,7 +398,7 @@ a.lang-switch__link--current {
         .navbar .dropdown-menu .dropdown-item {
             border-radius: 0.25rem;
             color: rgba($kd-paper, 0.82);
-            font-size: 0.9375rem;
+            font-size: 1rem;
         }
 
         .navbar .dropdown-menu .dropdown-item:hover,
