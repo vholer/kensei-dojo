@@ -1,6 +1,6 @@
 // Put your custom SCSS code here
 
-// Homepage: the logo painted large in grey, with "Kensei Dojo" on the first line and the two branches on the second
+// Homepage: the painted logo, then "Kensei Dojo" with the two branches on the line below (side by side on wide screens)
 // The theme compiles with LibSass: wrap CSS min()/max() in #{"..."} so Sass leaves them alone.
 $kd-ink: #0b0b0d;
 $kd-paper: #f2ede4;
@@ -17,35 +17,47 @@ body.home {
 
 .home-split {
     // Text scales off the name; the city line stretches to the name's width.
-    --kd-name: #{"clamp(2.25rem, min(12vw, 13svh), 8.5rem)"};
+    --kd-name: #{"clamp(2rem, min(10.5vw, 11.5svh), 7.5rem)"};
     --kd-city: calc(var(--kd-name) * 0.7);
-    position: relative;
-    display: grid;
+    display: flex;
     flex: 1 0 auto;
-    place-content: center;
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: center;
+    justify-content: center;
     min-height: 30rem;
     padding: 3rem 1rem;
     overflow: hidden;
     background: $kd-ink;
     color: $kd-paper;
+
+    // Wide screens: logo on the left, the text on the right
+    @include media-breakpoint-up(lg) {
+        --kd-name: #{"clamp(2rem, min(6.4vw, 15.3svh), 6rem)"};
+        flex-direction: row;
+        gap: calc(var(--kd-name) * 0.9);
+    }
 }
 
-// Background logo
 .home-split__mark {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: #{"min(80vw, 76svh)"};
+    flex-shrink: 0;
+    width: #{"min(60vw, 40svh)"};
     aspect-ratio: 1;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
+
+    @include media-breakpoint-up(lg) {
+        width: #{"clamp(7.2rem, min(24vw, 57.6svh), 22.4rem)"};
+    }
+}
+
+.home-split__text {
+    position: relative;
 }
 
 .home-split__enso {
     display: block;
     width: 100%;
     height: 100%;
-    color: #2b2b30;
+    color: #fff;
     overflow: visible;
 }
 
@@ -57,11 +69,13 @@ body.home {
     font-weight: 600;
     line-height: 0.95;
     letter-spacing: -0.01em;
-    text-transform: uppercase;
 }
 
+// Hairline under the name, dividing it from the branches
 .home-split h1.home-split__name {
     position: relative;
+    padding-bottom: calc(var(--kd-name) * 0.25);
+    border-bottom: 1px solid rgba(#fff, 0.3);
     font-size: var(--kd-name);
     text-align: center;
 }
@@ -104,7 +118,7 @@ body.home {
     }
 }
 
-.home-branch__city {
+.home-split .home-branch__city {
     font-size: var(--kd-city);
 }
 
@@ -154,23 +168,16 @@ body.home {
         animation: kd-rise 0.7s $kd-ease 0.45s both;
     }
 
-    // Dabbed on one after another
-    @keyframes kd-dab {
+    // Rises with the city names; the keyframe keeps the dots centred
+    @keyframes kd-rise-centred {
         from {
             opacity: 0;
+            transform: translate(-50%, calc(-50% + 1.25rem));
         }
     }
 
-    .home-split__dot {
-        animation: kd-dab 0.25s ease 0.9s both;
-    }
-
-    .home-split__dot:nth-child(2) {
-        animation-delay: 1.05s;
-    }
-
-    .home-split__dot:nth-child(3) {
-        animation-delay: 1.2s;
+    .home-split__ornament {
+        animation: kd-rise-centred 0.7s $kd-ease 0.45s both;
     }
 }
 
