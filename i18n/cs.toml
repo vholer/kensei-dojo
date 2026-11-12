@@ -1,0 +1,62 @@
+[404_text]
+other = "Stránka, kterou hledáte, neexistuje nebo byla přesunuta."
+
+[404_title]
+other = "Stránka nenalezena :("
+
+[browse]
+other = "Procházet"
+
+[chapter_next]
+other = "Další"
+
+[chapter_previous]
+other = "Předchozí"
+
+[edit_page]
+other = "Upravit tuto stránku na"
+
+[get_started]
+other = "Ukázkový průvodce"
+
+[home]
+other = "Domů"
+
+[in]
+other = "v"
+
+[by]
+other = "od"
+
+[last_updated]
+other = "Naposledy aktualizováno"
+
+[minute]
+one = "minuta"
+few = "minuty"
+many = "minuty"
+other = "minut"
+
+[on_this_page]
+other = "Na této stránce"
+
+[reading_time]
+other = "Odhadovaná doba čtení"
+
+[search_loading]
+other = "Načítání vyhledávacího indexu…"
+
+[search_no_recent]
+other = "Žádná nedávná hledání"
+
+[search_no_results]
+other = "Žádné výsledky"
+
+[search_placeholder]
+other = "Hledat"
+
+[search_title]
+other = "Hledat"
+
+[video_unsupported]
+other = "Váš prohlížeč nepodporuje vložená videa, ale nevadí, můžete si ho <a href=\"{{ .RelPermalink }}\">stáhnout</a> a přehrát ve svém oblíbeném přehrávači!"

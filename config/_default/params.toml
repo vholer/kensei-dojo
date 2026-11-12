@@ -1,6 +1,5 @@
 # Hugo
 title = "Kensei Dojo"
-description = "Škola tradičního japonského šermu"
 images = ["cover.png"]
 
 # mainSections
@@ -29,7 +28,7 @@ mathEngine = "KaTeX" # "KaTeX" (default) or "MathJax"
   navBarButtonText = "Get started"
 
   # FlexSearch
-  flexSearch = true # true (default) or false
+  flexSearch = false # true (default) or false
   searchExclKinds = [] # list of page kinds to exclude from search indexing (e.g. ["home", "taxonomy", "term"] )
   searchExclTypes = [] # list of content types to exclude from search indexing (e.g. ["blog", "docs", "legal", "contributors", "categories"])
   showSearch = [] # [] (all pages, default) or homepage (optionally) and list of sections (e.g. ["homepage", "blog", "guides"])
@@ -45,18 +44,18 @@ mathEngine = "KaTeX" # "KaTeX" (default) or "MathJax"
   alertDismissable = true # true (default) or false
 
   # Bootstrap
-  bootstrapJavascript = false # false (default) or true
+  bootstrapJavascript = true # false (default) or true
 
   # Nav
   sectionSwitcher = false # true or false (default)
   sectionNav = ["docs"] # ["docs"] (default) or list of sections (e.g. ["docs", "guides"])
   toTopButton = false # false (default) or true
   breadcrumbTrail = false # false (default) or true
-  headlineHash = true # true (default) or false
+  headlineHash = false # true (default) or false
   scrollSpy = true # true (default) or false
 
   # Multilingual
-  multilingualMode = false # false (default) or true
+  multilingualMode = true # false (default) or true
   showMissingLanguages = true # whether or not to show untranslated languages in the language menu; true (default) or false
 
   # Versioning
@@ -66,7 +65,7 @@ mathEngine = "KaTeX" # "KaTeX" (default) or "MathJax"
   # UX
   headerBar = false # true (default) or false
   backgroundDots = true # true (default) or false
-  aiButtons = true # true (default) or false
+  aiButtons = false # true (default) or false
 
   # Homepage
   sectionFooter = false # false (default) or true

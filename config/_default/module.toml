@@ -27,7 +27,7 @@
   target = "layouts"
 
 [[mounts]]
-  files = ['! home.html']
+  files = ['! home.html', '! _partials/header/header.html', '! _partials/main/docs-navigation.html']
   source = "node_modules/@thulite/doks-core/layouts"
   target = "layouts"
 

@@ -1,0 +1,28 @@
+{{- $languages := slice
+  (dict "lang" "cs" "code" "CZ" "name" "Kensei Dojo Brno" "url" "/cs/kontakty-brno/")
+  (dict "lang" "sk" "code" "SK" "name" "Kensei Dojo Senec" "url" "/treningy/") -}}
+<nav class="lang-switch" aria-label="Jazyk">
+  {{- range $language := $languages }}
+  {{- $current := eq $.Lang $language.lang }}
+  <a class="lang-switch__link{{ if $current }} lang-switch__link--current{{ end }}" href="{{ $language.url }}" hreflang="{{ $language.lang }}" lang="{{ $language.lang }}" aria-label="{{ $language.name }}"{{ if eq $.RelPermalink $language.url }} aria-current="page"{{ end }}>
+    {{- if eq $language.lang "cs" }}
+    <svg class="lang-switch__flag" viewBox="0 0 30 20" width="24" height="16" aria-hidden="true" focusable="false">
+      <rect width="30" height="10" fill="#fff"></rect>
+      <rect y="10" width="30" height="10" fill="#d7141a"></rect>
+      <path d="M0 0l15 10L0 20z" fill="#11457e"></path>
+    </svg>
+    {{- else }}
+    <svg class="lang-switch__flag" viewBox="0 0 30 20" width="24" height="16" aria-hidden="true" focusable="false">
+      <rect width="30" height="20" fill="#fff"></rect>
+      <rect y="6.67" width="30" height="6.67" fill="#0b4ea2"></rect>
+      <rect y="13.33" width="30" height="6.67" fill="#ee1c25"></rect>
+      <path d="M5 4h10v6.5c0 3.4-2.6 5-5 6.5-2.4-1.5-5-3.1-5-6.5z" fill="#fff"></path>
+      <path d="M5.6 4.6h8.8v5.9c0 3-2.3 4.4-4.4 5.7-2.1-1.3-4.4-2.7-4.4-5.7z" fill="#ee1c25"></path>
+      <path d="M9.5 6h1v1.5h2v.9h-2v1h2.8v.9h-2.8v2.7h-1v-2.7H6.7v-.9h2.8v-1h-2v-.9h2z" fill="#fff"></path>
+      <path d="M6.3 13c.6-1 1.4-1.4 2.1-.9.3-.9 2.9-.9 3.2 0 .7-.5 1.5-.1 2.1.9-1 1.3-2.4 2.2-3.7 3-1.3-.8-2.7-1.7-3.7-3z" fill="#0b4ea2"></path>
+    </svg>
+    {{- end }}
+    <span class="lang-switch__label">{{ $language.code }}</span>
+  </a>
+  {{- end }}
+</nav>

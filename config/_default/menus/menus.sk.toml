@@ -1,0 +1,85 @@
+[[main]]
+  identifier = "karate"
+  name = "Karate"
+  url = "/karate-historia/"
+  weight = 10
+
+[[main]]
+  parent = "karate"
+  name = "História"
+  url = "/karate-historia/"
+  weight = 10
+
+[[main]]
+  parent = "karate"
+  name = "Goju ryu – línia"
+  url = "/goju-ryu-linia/"
+  weight = 20
+
+[[main]]
+  parent = "karate"
+  name = "Goju ryu – kata"
+  url = "/goju-ryu-kata/"
+  weight = 30
+
+[[main]]
+  identifier = "kenjutsu"
+  name = "Kenjutsu"
+  url = "/kenjutsu-historie/"
+  weight = 20
+
+[[main]]
+  parent = "kenjutsu"
+  name = "História"
+  url = "/kenjutsu-historie/"
+  weight = 10
+
+[[main]]
+  parent = "kenjutsu"
+  name = "Hyoho Niten Ichiryu – línia"
+  url = "/hyoho-linia/"
+  weight = 20
+
+[[main]]
+  parent = "kenjutsu"
+  name = "Hyoho Niten Ichiryu – kata"
+  url = "/hyoho-kata/"
+  weight = 30
+
+[[main]]
+  name = "Tréningy"
+  url = "/treningy/"
+  weight = 30
+
+[[main]]
+  name = "Aktuality"
+  url = "/aktuality/"
+  weight = 40
+
+[[main]]
+  name = "Na stiahnutie"
+  url = "/na-stiahnutie/"
+  weight = 50
+
+[[main]]
+  identifier = "kontakty"
+  name = "Kontakty"
+  url = "/kontakty-senec/"
+  weight = 60
+
+[[main]]
+  parent = "kontakty"
+  name = "Senec"
+  url = "/kontakty-senec/"
+  weight = 10
+
+[[main]]
+  parent = "kontakty"
+  name = "Brno (CZ)"
+  url = "/cs/kontakty-brno/"
+  weight = 20
+
+[[footer]]
+  name = "Ochrana súkromia"
+  url = "/privacy/"
+  weight = 10

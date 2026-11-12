@@ -1,0 +1,62 @@
+[404_text]
+other = "Stránka, ktorú hľadáte, neexistuje alebo bola presunutá."
+
+[404_title]
+other = "Stránka nenájdená :("
+
+[browse]
+other = "Prehliadať"
+
+[chapter_next]
+other = "Ďalej"
+
+[chapter_previous]
+other = "Späť"
+
+[edit_page]
+other = "Upraviť túto stránku na"
+
+[get_started]
+other = "Ukážkový sprievodca"
+
+[home]
+other = "Domov"
+
+[in]
+other = "v"
+
+[by]
+other = "od"
+
+[last_updated]
+other = "Naposledy aktualizované"
+
+[minute]
+one = "minúta"
+few = "minúty"
+many = "minúty"
+other = "minút"
+
+[on_this_page]
+other = "Na tejto stránke"
+
+[reading_time]
+other = "Odhadovaný čas čítania"
+
+[search_loading]
+other = "Načítava sa vyhľadávací index…"
+
+[search_no_recent]
+other = "Žiadne nedávne vyhľadávania"
+
+[search_no_results]
+other = "Žiadne výsledky"
+
+[search_placeholder]
+other = "Hľadať"
+
+[search_title]
+other = "Hľadať"
+
+[video_unsupported]
+other = "Váš prehliadač nepodporuje vložené videá, ale nič sa nedeje, môžete si ho <a href=\"{{ .RelPermalink }}\">stiahnuť</a> a pozrieť vo svojom obľúbenom prehrávači!"

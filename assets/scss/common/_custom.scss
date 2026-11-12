@@ -1,1 +1,524 @@
 // Put your custom SCSS code here
+
+// Homepage: the logo painted large in grey, with "Kensei Dojo" on the first line and the two branches on the second
+// The theme compiles with LibSass: wrap CSS min()/max() in #{"..."} so Sass leaves them alone.
+$kd-ink: #0b0b0d;
+$kd-paper: #f2ede4;
+$kd-vermilion: #d7322d;
+$kd-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+// One screen: the split takes whatever height the footer leaves
+body.home {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100svh;
+}
+
+.home-split {
+    // Text scales off the name; the city line stretches to the name's width.
+    --kd-name: #{"clamp(2.25rem, min(12vw, 13svh), 8.5rem)"};
+    --kd-city: calc(var(--kd-name) * 0.7);
+    position: relative;
+    display: grid;
+    flex: 1 0 auto;
+    place-content: center;
+    min-height: 30rem;
+    padding: 3rem 1rem;
+    overflow: hidden;
+    background: $kd-ink;
+    color: $kd-paper;
+}
+
+// Background logo
+.home-split__mark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: #{"min(80vw, 76svh)"};
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.home-split__enso {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #2b2b30;
+    overflow: visible;
+}
+
+// .home-split prefix: the theme colours dark-mode headings with [data-bs-theme="dark"] h2
+.home-split h1.home-split__name,
+.home-split .home-branch__city {
+    margin: 0;
+    color: #fff;
+    font-weight: 600;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+}
+
+.home-split h1.home-split__name {
+    position: relative;
+    font-size: var(--kd-name);
+    text-align: center;
+}
+
+// Second line, as wide as the name: Senec flush left, Brno flush right
+.home-split__branches {
+    position: relative;
+    display: flex;
+    gap: 0.4em;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: calc(var(--kd-name) * 0.3);
+    font-size: var(--kd-city);
+}
+
+// Three small red brush dots on the centre line between the cities
+.home-split__ornament {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.75em;
+    height: 0.15em;
+    color: $kd-vermilion;
+    overflow: visible;
+    transform: translate(-50%, -50%);
+}
+
+// The city name is the link; a red underline shows on hover
+.home-split a.home-branch__link {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 0.06em;
+    text-underline-offset: 0.12em;
+    transition: text-decoration-color 0.2s ease;
+
+    &:hover {
+        color: inherit;
+        text-decoration-color: $kd-vermilion;
+    }
+}
+
+.home-branch__city {
+    font-size: var(--kd-city);
+}
+
+.home-split a:focus-visible {
+    outline: 2px solid $kd-paper;
+    outline-offset: 0.5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    @keyframes kd-rise {
+        from {
+            opacity: 0;
+            transform: translateY(1.25rem);
+        }
+    }
+
+    @keyframes kd-brush {
+        from {
+            stroke-dashoffset: 100;
+        }
+    }
+
+    .home-split h1.home-split__name {
+        animation: kd-rise 0.6s $kd-ease 0.3s both;
+    }
+
+    // Ring first, then the left line, then the right line
+    .home-split__enso-reveal {
+        animation: kd-brush 0.55s cubic-bezier(0.55, 0.05, 0.3, 1) 0.2s both;
+    }
+
+    .home-split__enso-reveal--first,
+    .home-split__enso-reveal--second {
+        animation-duration: 0.65s;
+    }
+
+    .home-split__enso-reveal--first {
+        animation-delay: 0.95s;
+    }
+
+    .home-split__enso-reveal--second {
+        animation-delay: 1.6s;
+    }
+
+    // Text first, the logo paints itself in behind it
+    .home-branch__city {
+        animation: kd-rise 0.7s $kd-ease 0.45s both;
+    }
+
+    // Dabbed on one after another
+    @keyframes kd-dab {
+        from {
+            opacity: 0;
+        }
+    }
+
+    .home-split__dot {
+        animation: kd-dab 0.25s ease 0.9s both;
+    }
+
+    .home-split__dot:nth-child(2) {
+        animation-delay: 1.05s;
+    }
+
+    .home-split__dot:nth-child(3) {
+        animation-delay: 1.2s;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .home-split a.home-branch__link {
+        transition: none;
+    }
+}
+
+// Header language switch. Current state uses a class, not [aria-current], because PurgeCSS drops attribute selectors it can't see in hugo_stats.json.
+.lang-switch {
+    display: flex;
+    flex-shrink: 0;
+    order: 2;
+    gap: 0.25rem;
+    align-items: center;
+    margin-left: 0.5rem;
+}
+
+a.lang-switch__link {
+    display: inline-flex;
+    gap: 0.4rem;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    padding: 0.25rem 0.5rem;
+    border-bottom: 2px solid transparent;
+    color: rgba($kd-paper, 0.72);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: $kd-paper;
+        text-decoration: none;
+    }
+
+    &:focus-visible {
+        outline: 2px solid $kd-paper;
+        outline-offset: 2px;
+    }
+}
+
+a.lang-switch__link--current {
+    border-bottom-color: $kd-vermilion;
+    color: $kd-paper;
+}
+
+.lang-switch__flag {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1rem;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba($kd-paper, 0.2);
+}
+
+// Flags only on phones so the brand, switch and menu button fit one row
+@include media-breakpoint-down(sm) {
+    .lang-switch__label {
+        display: none;
+    }
+
+    .navbar-brand {
+        min-width: 0;
+    }
+
+    .navbar-brand span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+// Top bar. The blur stays desktop-only: backdrop-filter would make .navbar the containing block for the fixed offcanvas menu inside it.
+@include color-mode(dark) {
+    .navbar {
+        min-height: 4.5rem;
+        background-color: $kd-ink;
+        border-bottom: 1px solid rgba($kd-paper, 0.1);
+
+        @include media-breakpoint-up(lg) {
+            background-color: rgba($kd-ink, 0.8);
+            -webkit-backdrop-filter: blur(14px) saturate(140%);
+            backdrop-filter: blur(14px) saturate(140%);
+        }
+    }
+
+    .navbar .navbar-brand {
+        display: inline-flex;
+        gap: 0.625rem;
+        align-items: center;
+        color: $kd-paper;
+        font-size: 1.0625rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+
+        @include media-breakpoint-up(xl) {
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+    }
+
+    .navbar .navbar-nav .nav-link {
+        color: rgba($kd-paper, 0.78);
+        font-size: 0.9375rem;
+        transition: color 0.2s ease;
+    }
+
+    .navbar .navbar-nav .nav-link:hover,
+    .navbar .navbar-nav .nav-link:focus,
+    .navbar .navbar-nav .nav-link.show,
+    .navbar .navbar-nav .nav-link.active {
+        color: $kd-paper;
+    }
+
+    .navbar .social-link {
+        color: rgba($kd-paper, 0.78);
+    }
+
+    .navbar .social-link:hover {
+        color: $kd-paper;
+    }
+
+    .navbar .navbar-nav .nav-link:focus-visible,
+    .navbar .social-link:focus-visible,
+    .navbar .navbar-brand:focus-visible,
+    .navbar .dropdown-item:focus-visible {
+        outline: 2px solid $kd-paper;
+        outline-offset: 2px;
+        box-shadow: none;
+    }
+
+    @include media-breakpoint-up(lg) {
+        // ::before because Bootstrap reserves .dropdown-toggle::after for its caret
+        .navbar .navbar-nav .nav-link {
+            position: relative;
+        }
+
+        .navbar .navbar-nav .nav-link::before {
+            content: "";
+            position: absolute;
+            right: 0.5rem;
+            bottom: 0.1rem;
+            left: 0.5rem;
+            height: 2px;
+            background: $kd-vermilion;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.25s $kd-ease;
+        }
+
+        .navbar .navbar-nav .nav-link:hover::before,
+        .navbar .navbar-nav .nav-link.show::before,
+        .navbar .navbar-nav .nav-link.active::before {
+            transform: scaleX(1);
+        }
+
+        .navbar .icon-tabler-chevron-down {
+            width: 1rem;
+            height: 1rem;
+            opacity: 0.7;
+            transition: transform 0.2s ease;
+        }
+
+        .navbar .dropdown-toggle[aria-expanded="true"] .icon-tabler-chevron-down {
+            transform: rotate(180deg);
+        }
+
+        // Outline, not border: the markup's border-0 utility is !important
+        .navbar .dropdown-menu {
+            margin-top: 0.5rem;
+            padding: 0.375rem;
+            background-color: $kd-ink;
+            outline: 1px solid rgba($kd-paper, 0.12);
+        }
+
+        .navbar .dropdown-menu .dropdown-item {
+            border-radius: 0.25rem;
+            color: rgba($kd-paper, 0.82);
+            font-size: 0.9375rem;
+        }
+
+        .navbar .dropdown-menu .dropdown-item:hover,
+        .navbar .dropdown-menu .dropdown-item:focus {
+            background-color: rgba($kd-paper, 0.08);
+            color: $kd-paper;
+        }
+
+        .navbar .dropdown-menu .dropdown-item.active {
+            background-color: rgba($kd-vermilion, 0.2);
+            color: $kd-paper;
+        }
+    }
+}
+
+.navbar-brand__mark {
+    flex-shrink: 0;
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-right: 0;
+}
+
+// Narrowest phones: the site name matters more than the mark
+@media (max-width: 23rem) {
+    .navbar-brand__mark {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .navbar .navbar-nav .nav-link::before,
+    .navbar .icon-tabler-chevron-down {
+        transition: none;
+    }
+}
+
+// Inner pages
+@include color-mode(dark) {
+    body {
+        background: $kd-ink;
+        color: $kd-paper;
+    }
+
+    .docs-content h1,
+    .docs-content h2 {
+        color: $kd-paper;
+    }
+
+    .docs-content a {
+        color: inherit;
+        text-decoration: underline;
+        text-decoration-color: $kd-vermilion;
+        text-underline-offset: 0.2em;
+    }
+
+    .docs-content a:hover {
+        color: $kd-paper;
+    }
+
+    .docs-toc #toc a {
+        color: rgba($kd-paper, 0.7);
+    }
+
+    .docs-toc #toc a:hover,
+    .docs-toc #toc a.active {
+        color: $kd-paper;
+    }
+
+    .footer {
+        border-top: 1px solid rgba($kd-paper, 0.1);
+    }
+}
+
+.docs-content {
+    max-width: 50rem;
+    margin-inline: auto;
+    padding-block: 2rem 4rem;
+    color: rgba($kd-paper, 0.86);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+
+    h2 {
+        margin-top: 2.75rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba($kd-paper, 0.1);
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    hr {
+        margin-block: 2.5rem;
+        border-color: rgba($kd-paper, 0.1);
+        opacity: 1;
+    }
+
+    li::marker {
+        color: $kd-vermilion;
+    }
+
+    table {
+        --bs-table-bg: transparent;
+        --bs-table-color: #{rgba($kd-paper, 0.86)};
+        --bs-table-border-color: #{rgba($kd-paper, 0.1)};
+        margin-block: 1rem 2rem;
+    }
+
+    th {
+        color: rgba($kd-paper, 0.7);
+        font-size: 0.875rem;
+        font-weight: 500;
+    }
+
+    a:focus-visible {
+        outline: 2px solid $kd-paper;
+        outline-offset: 2px;
+    }
+}
+
+.page-header {
+    margin-bottom: 2rem;
+
+    h1 {
+        margin-bottom: 0;
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 600;
+        line-height: 1.1;
+    }
+}
+
+// Inline images in page content. Classes, not style attributes: the site CSP blocks those.
+.page-figure {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 1.5rem;
+    border: 1px solid rgba($kd-paper, 0.14);
+    border-radius: 2px;
+}
+
+.page-figure--small {
+    max-width: 10rem;
+    border: 0;
+}
+
+.page-figure--wide {
+    width: 100%;
+}
+
+@include media-breakpoint-up(md) {
+    .page-figure--right,
+    .page-figure--left {
+        max-width: 20rem;
+    }
+
+    .page-figure--right {
+        float: right;
+        margin: 0.25rem 0 1rem 1.75rem;
+    }
+
+    .page-figure--left {
+        float: left;
+        margin: 0.25rem 1.75rem 1rem 0;
+    }
+
+    .page-figure--small {
+        max-width: 10rem;
+    }
+}
