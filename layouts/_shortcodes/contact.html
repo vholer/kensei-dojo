@@ -1,0 +1,18 @@
+{{- /* One contact tile: {{< contact icon="mail|calendar-check|facebook|instagram" label="..." url="..." [text="..."] >}}
+     The whole tile is the link. Without text, the address is shown without "https://www." or a trailing slash.
+     mailto: addresses go through the theme's e-mail obfuscation, like ordinary Markdown e-mail links. */ -}}
+{{- $url := .Get "url" -}}
+{{- $text := .Get "text" | default (replaceRE `^https?://(www\.)?` "" $url | strings.TrimSuffix "/") -}}
+<div class="contact-tile">
+  <span class="contact-tile__icon">{{ partial "icon" (.Get "icon") }}</span>
+  <div class="contact-tile__body">
+    <span class="contact-tile__label">{{ .Get "label" }}</span>
+    <div class="contact-tile__value">
+      {{- if hasPrefix $url "mailto:" -}}
+        {{ partial "main/email" (dict "emailAddress" $url "emailTitle" (strings.TrimPrefix "mailto:" $url)) }}
+      {{- else -}}
+        <a href="{{ $url }}" rel="external">{{ $text }}</a>
+      {{- end -}}
+    </div>
+  </div>
+</div>

@@ -10,6 +10,7 @@ params:
       city: "Brno"
       country: "Česko"
       lang: "cs"
+      activities: ["Kenjutsu"]
       image: "/images/kensei/brno-city.jpg"
       text: "Česká pobočka klubu Kensei Dojo v Brně."
       items:
@@ -20,11 +21,12 @@ params:
         - value: "Přihlášení na trénink"
           url: "http://kensei.banda.cz/"
       cta:
-        url: "/cs/kontakty-brno/"
+        url: "/cs/kontakt/"
     senec:
       city: "Senec"
       country: "Slovensko"
       lang: "sk"
+      activities: ["Kenjutsu", "Karate", "Kobudo"]
       image: "/images/kensei/senec-city.jpg"
       text: "Slovenská pobočka klubu, tréninky karate a kenjutsu."
       items:
@@ -33,7 +35,7 @@ params:
         - value: "info.senec@kensei-dojo.com"
           url: "mailto:info.senec@kensei-dojo.com"
       cta:
-        url: "/treningy/"
+        url: "/sk/kontakt/"
   seo:
     title: "Kensei Dojo"
     description: ""

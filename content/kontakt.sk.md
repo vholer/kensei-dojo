@@ -1,5 +1,5 @@
 ---
-title: "Kontakty – Senec"
+title: "Kontakt"
 description: "Kontaktné údaje klubu Kensei Dojo Senec – sídlo, prezident, generálny sekretár, webmaster a informácie."
 summary: ""
 date: 2023-09-07T16:12:03+02:00
@@ -15,14 +15,11 @@ params:
     robots: ""
 ---
 
-<img src="/images/kensei/logo.png" alt="Kensei Dojo Senec – logo" class="page-figure page-figure--right page-figure--small">
-
 ## Sídlo klubu
 
-Sokolská 15, Senec, 903 01, Slovenská republika<br>
-IČO: 30800668 · DIČ: 2022137777
-
----
+Sokolská 15, Senec, 903 01, Slovenská republika<br />
+IČO: 30800668<br />
+DIČ: 2022137777
 
 ## Prezident
 

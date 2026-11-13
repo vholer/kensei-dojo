@@ -1,3 +1,11 @@
 <article class="home-branch home-branch--{{ urlize .city }}">
-  <h2 class="home-branch__city"><a class="home-branch__link" href="{{ .cta.url }}">{{ .city }}{{ with .country }}<span class="home-branch__country">{{ partial "flag" (dict "lang" $.lang "class" "home-branch__flag") }}</span>{{ end }}</a></h2>
+  <h2 class="home-branch__city"><a class="home-branch__link" href="{{ .cta.url }}">{{ .city }}</a></h2>
+  <div class="home-branch__meta">
+    {{- with .activities }}
+    <ul class="home-branch__activities">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>
+    {{- end }}
+    {{- with .country }}
+    <span class="home-branch__country">{{ partial "flag" (dict "lang" $.lang "class" "home-branch__flag") }}</span>
+    {{- end }}
+  </div>
 </article>
