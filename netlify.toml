@@ -23,10 +23,34 @@
   autoLaunch = false
 
 # Redirects and rewrites — https://docs.netlify.com/routing/redirects/#syntax-for-the-netlify-configuration-file
+
+# Contact pages renamed
+[[redirects]]
+	from = "/kontakty-senec/"
+	to = "/sk/kontakt/"
+	status = 301
+
+[[redirects]]
+	from = "/cs/kontakty-brno/"
+	to = "/cs/kontakt/"
+	status = 301
+
+# Missing pages get the 404 page of their language (these rules only apply where no file exists)
+[[redirects]]
+	from = "/sk/*"
+	to = "/sk/404/"
+	status = 404
+
+[[redirects]]
+	from = "/cs/*"
+	to = "/cs/404/"
+	status = 404
+
+# Old addresses from before the Slovak pages moved into /sk/, e.g. /treningy/ -> /sk/treningy/
 [[redirects]]
 	from = "/*"
-	to = "/404/"
-	status = 404
+	to = "/sk/:splat"
+	status = 301
 
 # Custom headers — https://docs.netlify.com/routing/headers/#syntax-for-the-netlify-configuration-file
 [[headers]]
@@ -35,7 +59,7 @@
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     X-Content-Type-Options = "nosniff"
     X-XSS-Protection = "1; mode=block"
-    Content-Security-Policy = "default-src 'self'; manifest-src 'self'; connect-src 'self'; font-src 'self'; img-src 'self' https://avatars.githubusercontent.com data:; script-src 'self' 'nonce-dXNlcj0iaGVsbG8iLGRvbWFpbj0iaGVua3ZlcmxpbmRlLmNvbSIsZG9jdW1lbnQud3JpdGUodXNlcisiQCIrZG9tYWluKTs=' 'sha256-aWZ3y/RxbBYKHXH0z8+8ljrHG1mSBvyzSfxSMjBSaXk='; style-src 'self'"
+    Content-Security-Policy = "default-src 'self'; manifest-src 'self'; connect-src 'self'; frame-src https://mapy.com; font-src 'self'; img-src 'self' https://avatars.githubusercontent.com data:; script-src 'self' 'nonce-dXNlcj0iaGVsbG8iLGRvbWFpbj0iaGVua3ZlcmxpbmRlLmNvbSIsZG9jdW1lbnQud3JpdGUodXNlcisiQCIrZG9tYWluKTs=' 'sha256-aWZ3y/RxbBYKHXH0z8+8ljrHG1mSBvyzSfxSMjBSaXk='; style-src 'self'"
     X-Frame-Options = "SAMEORIGIN"
     Referrer-Policy = "strict-origin"
     Permissions-Policy = "geolocation=(self), microphone=(), camera=()"

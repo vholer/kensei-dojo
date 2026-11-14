@@ -15,26 +15,20 @@ params:
     robots: ""
 ---
 
-## Sídlo klubu
-
-Sokolská 15, Senec, 903 01, Slovenská republika<br />
-IČO: 30800668<br />
-DIČ: 2022137777
-
-## Prezident
-
-**Filip Rázga** · +421 903 031 518 · [president@kensei-dojo.com](mailto:president@kensei-dojo.com)
-
-## Generálny sekretár
-
-**Jana Minaroviech** · +421 915 879 550 · [secretary.senec@kensei-dojo.com](mailto:secretary.senec@kensei-dojo.com)
-
-## Webmaster
-
-**Ondřej Martinák** · +420 724 511 940 · [webmaster@kensei-dojo.com](mailto:webmaster@kensei-dojo.com)
-
----
-
 ## Informácie
 
-[info.senec@kensei-dojo.com](mailto:info.senec@kensei-dojo.com)
+{{< contacts >}}
+{{< contact icon="mail" label="E-mail" url="mailto:info.senec@kensei-dojo.com" >}}
+{{< /contacts >}}
+
+## Kontaktné osoby
+
+{{< persons >}}
+{{< person role="Prezident" name="Filip Rázga" phone="+421 903 031 518" email="president@kensei-dojo.com" >}}
+{{< person role="Generálny sekretár" name="Jana Minaroviech" phone="+421 915 879 550" email="secretary.senec@kensei-dojo.com" >}}
+{{< person role="Webmaster" name="Ondřej Martinák" phone="+420 724 511 940" email="webmaster@kensei-dojo.com" >}}
+{{< /persons >}}
+
+## Sídlo klubu
+
+{{< address street="Sokolská 15" city="903 01 Senec" country="Slovenská republika" ico="30800668" dic="2022137777" >}}

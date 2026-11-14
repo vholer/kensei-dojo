@@ -12,7 +12,9 @@ summarylength = 20 # 70 (default)
 
 # Multilingual
 defaultContentLanguage = "sk"
-defaultContentLanguageInSubdir = false
+defaultContentLanguageInSubdir = true
+# / is the entrance between the branches (content/main.sk.md), not a redirect to /sk/
+disableDefaultLanguageRedirect = true
 
 copyRight = "Copyright (c) 2020-2026 Thulite"
 

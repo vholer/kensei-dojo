@@ -1,46 +1,28 @@
 ---
-title: "Kensei Dojo"
-description: "Kensei Dojo je klub tradičního japonského šermu (kenjutsu) a okinawského karate Goju ryu s pobočkami v Brně a v Senci."
+title: "Kensei Dojo Brno"
+description: "Kensei Dojo Brno – česká pobočka klubu tradičního japonského šermu (kenjutsu), škola Hyoho Niten Ichiryu."
+summary: ""
 date: 2023-09-07T16:33:54+02:00
-lastmod: 2026-09-19T00:00:00+02:00
+lastmod: 2026-11-14T00:00:00+01:00
 draft: false
 params:
-  branches:
-    brno:
-      city: "Brno"
-      country: "Česko"
-      lang: "cs"
-      activities: ["Kenjutsu"]
-      image: "/images/kensei/brno-city.jpg"
-      text: "Česká pobočka klubu Kensei Dojo v Brně."
-      items:
-        - value: "Facebook"
-          url: "https://www.facebook.com/kensei.dojo.brno"
-        - value: "info.brno@kensei-dojo.com"
-          url: "mailto:info.brno@kensei-dojo.com"
-        - value: "Přihlášení na trénink"
-          url: "http://kensei.banda.cz/"
-      cta:
-        url: "/cs/kontakt/"
-    senec:
-      city: "Senec"
-      country: "Slovensko"
-      lang: "sk"
-      activities: ["Kenjutsu", "Karate", "Kobudo"]
-      image: "/images/kensei/senec-city.jpg"
-      text: "Slovenská pobočka klubu, tréninky karate a kenjutsu."
-      items:
-        - value: "Karate, kenjutsu a kobudo"
-        - value: "Obecní klub Blatné, Šarfická 37"
-        - value: "info.senec@kensei-dojo.com"
-          url: "mailto:info.senec@kensei-dojo.com"
-      cta:
-        url: "/sk/kontakt/"
   seo:
-    title: "Kensei Dojo"
+    title: "Kensei Dojo Brno"
     description: ""
     canonical: ""
     robots: ""
 ---
 
-Vítejte v Kensei Dojo. Vyučujeme **kenjutsu** (umění japonského meče, škola Hyoho Niten Ichiryu) a **karate** stylu **Goju ryu** (Shodokan). Vyberte si svou pobočku.
+Kensei Dojo Brno je česká pobočka klubu Kensei Dojo. Věnujeme se tradičnímu japonskému šermu.
+
+## Co cvičíme
+
+- **Kenjutsu** – umění japonského meče, škola Hyoho Niten Ichiryu
+
+## Tréninky
+
+Trénujeme v pondělí od 19:00 v tělocvičně ZŠ, Cacovická 1228/4. Rozvrh, mapu a informace o přihlašování najdete na stránce [Tréninky](/cs/treninky/).
+
+## Kontakt
+
+Před prvním tréninkem napište na [info.brno@kensei-dojo.com](mailto:info.brno@kensei-dojo.com). Další kontakty a sociální sítě najdete na stránce [Kontakt](/cs/kontakt/).

@@ -17,7 +17,7 @@ params:
 
 <img src="/images/kensei/okinawa.jpg" alt="Okinawa" class="page-figure page-figure--right">
 
-**K**arate, ktoré sa cvičí v súčasnosti, pochádza priamo z **Okinawa-Te**, okinawského systému sebeobrany. Tento sa zasa vyvíjal z čínskeho systému Chuan-Fa. Podľa legendy vraj slávny indický budhistický mních Daruma Taishi (Bodhidarma) putoval v dobe dynastie Liang (480 n. l.) po Číne, aby oboznámil mníchov tejto krajiny s budhistickým učením. Po istom čase sa utiahol do kláštora Shaolin-szu, kde strávil veľa času vyučovaním mníchov. Pri výučbe zenu si všimol, že mnísi majú problémy s fyzickou kondíciou a disciplínou (problém im robilo už každodenné naberanie vody zo studne). Preto zaviedol cvičenia na posilnenie ako aj fyzickej zdatnosti tak i disciplíny. Tento tréning, nazývaný I-chinching, mal charakter sebaobrany, čo bolo pre mníchov veľmi vhodné, keďže nesmeli nosiť a používať zbrane. Boli to práve mnísi, ktorí priniesli toto umenie na ostrov Okinawa.
+Karate, ktoré sa cvičí v súčasnosti, pochádza priamo z **Okinawa-Te**, okinawského systému sebeobrany. Tento sa zasa vyvíjal z čínskeho systému Chuan-Fa. Podľa legendy vraj slávny indický budhistický mních Daruma Taishi (Bodhidarma) putoval v dobe dynastie Liang (480 n. l.) po Číne, aby oboznámil mníchov tejto krajiny s budhistickým učením. Po istom čase sa utiahol do kláštora Shaolin-szu, kde strávil veľa času vyučovaním mníchov. Pri výučbe zenu si všimol, že mnísi majú problémy s fyzickou kondíciou a disciplínou (problém im robilo už každodenné naberanie vody zo studne). Preto zaviedol cvičenia na posilnenie ako aj fyzickej zdatnosti tak i disciplíny. Tento tréning, nazývaný I-chinching, mal charakter sebaobrany, čo bolo pre mníchov veľmi vhodné, keďže nesmeli nosiť a používať zbrane. Boli to práve mnísi, ktorí priniesli toto umenie na ostrov Okinawa.
 
 V tom čase (okolo roku 1400) existoval na Okinawe bojový štýl **Tode**. Veľmi intenzívne diplomatické, kultúrne a obchodné styky Okinawy s Čínou spôsobili, že do okinawského tvrdého systému vnikol vplyv čínskych bojových umení s typicky jemnými a kruhovými technikami. Spojením týchto dvoch štýlov vznikol veľmi účinný sebaobranný systém, ktorý si v niektorých oblastiach zachoval názov Tode a v iných oblastiach Okinawa-Te.
 
@@ -40,4 +40,4 @@ Títo majstri mali mnoho žiakov, avšak do dejín sa najviac zapísali traja z 
 
 ---
 
-*materiál spracoval: Imrich Mezei, doplnil: Filip Rázga — 4. 3. 2007*
+*Materiál spracoval: Imrich Mezei, doplnil: Filip Rázga*

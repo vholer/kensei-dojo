@@ -1,0 +1,14 @@
+{{- /* One person card: {{< person role="..." name="..." [phone="..."] [email="..."] >}}
+     The phone is shown as written and dialled without spaces; the e-mail goes through the theme's obfuscation. */ -}}
+<div class="person-card">
+  <span class="person-card__role">{{ .Get "role" }}</span>
+  <span class="person-card__name">{{ .Get "name" }}</span>
+  <ul class="person-card__lines">
+    {{- with .Get "phone" }}
+    <li>{{ partial "icon" "phone" }}<a href="tel:{{ replace . " " "" }}">{{ . }}</a></li>
+    {{- end }}
+    {{- with .Get "email" }}
+    <li>{{ partial "icon" "mail" }}{{ partial "main/email" (dict "emailAddress" (printf "mailto:%s" .) "emailTitle" .) }}</li>
+    {{- end }}
+  </ul>
+</div>

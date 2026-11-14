@@ -20,7 +20,7 @@ $kd-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 // One screen: the split takes whatever height the footer leaves
-body.home {
+body.main {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -393,8 +393,8 @@ a.lang-switch__link--current {
         min-width: 0;
     }
 
-    // a.navbar-brand outranks the 1.375rem rule in the dark-mode top bar block, which comes later
-    [data-bs-theme="dark"] .navbar a.navbar-brand {
+    // span.navbar-brand outranks the 1.375rem rule in the dark-mode top bar block, which comes later
+    [data-bs-theme="dark"] .navbar span.navbar-brand {
         font-size: 1.125rem;
     }
 
@@ -451,7 +451,6 @@ a.lang-switch__link--current {
 
     .navbar .navbar-nav .nav-link:focus-visible,
     .navbar .social-link:focus-visible,
-    .navbar .navbar-brand:focus-visible,
     .navbar .dropdown-item:focus-visible {
         outline: 2px solid $kd-paper;
         outline-offset: 2px;
@@ -650,6 +649,16 @@ a.lang-switch__link--current {
     border: 0;
 }
 
+// Embedded mapy.com map: full content width, 3:2
+.page-map {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    margin: 0 0 1.5rem;
+    border: 1px solid rgba($kd-paper, 0.14);
+    border-radius: 2px;
+}
+
 .page-figure--wide {
     width: 100%;
 }
@@ -675,6 +684,51 @@ a.lang-switch__link--current {
     }
 }
 
+// Kata lists side by side: each column is a ### heading with its list, lines set tighter than body text.
+// Clears the floated figure so the columns get the full width.
+.kata-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: 0 2rem;
+    clear: both;
+    margin-bottom: 1.5rem;
+
+    h3 {
+        margin-top: 0.5rem;
+        font-size: 1.1rem;
+    }
+
+    ol {
+        margin-bottom: 1rem;
+        padding-left: 1.75rem;
+    }
+
+    li {
+        margin: 0;
+        line-height: 1.45;
+        font-variant-numeric: tabular-nums;
+    }
+}
+
+// Shared frame for contact tiles, person and address cards: no outline, a soft panel with a thin red line
+// along the left edge. On hover the panel lightens and the line thickens.
+.contact-tile,
+.person-card,
+.address-card {
+    position: relative;
+    border-radius: 0 3px 3px 0;
+    background-color: rgba($kd-paper, 0.035);
+    box-shadow: inset 2px 0 0 $kd-vermilion;
+    transition:
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
+
+    &:hover {
+        background-color: rgba($kd-paper, 0.06);
+        box-shadow: inset 4px 0 0 $kd-vermilion;
+    }
+}
+
 // Contact tiles ({{< contacts >}} / {{< contact >}} shortcodes): icon, small label, address; the whole tile is the link
 .contact-tiles {
     display: grid;
@@ -693,16 +747,6 @@ a.lang-switch__link--current {
     gap: 1rem;
     align-items: center;
     padding: 1rem 1.25rem;
-    border: 1px solid rgba($kd-paper, 0.12);
-    border-radius: 2px;
-    transition:
-        border-color 0.2s ease,
-        background-color 0.2s ease;
-}
-
-.contact-tile:hover {
-    border-color: rgba($kd-paper, 0.35);
-    background-color: rgba($kd-paper, 0.03);
 }
 
 .contact-tile__icon {
@@ -772,7 +816,132 @@ a.lang-switch__link--current {
 
 @media (prefers-reduced-motion: reduce) {
     .contact-tile,
-    .contact-tile__icon {
+    .contact-tile__icon,
+    .person-card,
+    .address-card {
         transition: none;
+    }
+}
+
+// Person cards ({{< persons >}} / {{< person >}} shortcodes): role, name, then phone and e-mail with small icons
+.person-cards {
+    display: grid;
+    // Wide enough for the longest address on one line
+    grid-template-columns: repeat(auto-fit, minmax(#{"min(19rem, 100%)"}, 1fr));
+    gap: 0.75rem;
+    margin-block: 1.5rem 2rem;
+}
+
+.person-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+}
+
+.person-card__role {
+    color: rgba($kd-paper, 0.6);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+
+.person-card__name {
+    margin-top: 0.25rem;
+    color: $kd-paper;
+    font-size: 1.1875rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.person-card__lines {
+    display: grid;
+    gap: 0.4rem;
+    margin: 1rem 0 0;
+    padding: 0;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    list-style: none;
+
+    li {
+        display: flex;
+        gap: 0.6rem;
+        align-items: center;
+        min-width: 0;
+    }
+
+    // Phone numbers and e-mail addresses stay on one line
+    a {
+        white-space: nowrap;
+    }
+
+    svg {
+        flex-shrink: 0;
+        width: 1rem;
+        height: 1rem;
+        color: rgba($kd-paper, 0.5);
+    }
+}
+
+// The list markers and red underlines of .docs-content do not fit inside cards
+.docs-content .person-card__lines li::marker {
+    content: none;
+}
+
+.docs-content .person-card a {
+    color: rgba($kd-paper, 0.86);
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: $kd-paper;
+        text-decoration: underline;
+        text-decoration-color: $kd-vermilion;
+    }
+}
+
+// Registered address card ({{< address >}} shortcode): pin icon, address, then the company IDs in small labels
+.address-card {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    max-width: 30rem;
+    margin-block: 1.5rem 2rem;
+    padding: 1.25rem;
+}
+
+.address-card__lines {
+    margin: 0.35rem 0 0;
+    color: rgba($kd-paper, 0.86);
+    font-style: normal;
+    line-height: 1.5;
+
+    strong {
+        color: $kd-paper;
+        font-weight: 600;
+    }
+}
+
+.address-card__ids {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    margin: 1rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid rgba($kd-paper, 0.1);
+
+    dt {
+        color: rgba($kd-paper, 0.6);
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        line-height: 1.3;
+    }
+
+    dd {
+        margin: 0.15rem 0 0;
+        color: $kd-paper;
+        font-variant-numeric: tabular-nums;
     }
 }

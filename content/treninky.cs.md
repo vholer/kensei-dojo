@@ -29,4 +29,4 @@ Před návštěvou prvního tréniku napiště e-mail na adresu [info.brno@kense
 
 Tělocvična ZŠ, Cacovická 1228/4, 602 00 Brno
 
-<iframe style="border:none" src="https://mapy.com/s/nonoluzamo" width="700" height="466" frameborder="0"></iframe>
+<iframe class="page-map" src="https://mapy.com/s/nonoluzamo" title="Mapa – Tělocvična ZŠ, Cacovická 1228/4" loading="lazy"></iframe>

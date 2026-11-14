@@ -1,5 +1,5 @@
-{{/* The home page is a gateway between the branches: no top bar there. */}}
-{{ if not .IsHome -}}
+{{/* The entrance at / (main layout) sits between the branches: no top bar there. */}}
+{{ if ne .Layout "main" -}}
 {{ if site.Params.doks.alert -}}
   {{ partial "header/alert.html" . }}
 {{ end -}}

@@ -1,6 +1,6 @@
 {{- $languages := slice
-  (dict "lang" "sk" "code" "SK" "name" "Kensei Dojo Senec" "url" "/treningy/")
-  (dict "lang" "cs" "code" "CZ" "name" "Kensei Dojo Brno" "url" "/cs/kontakty-brno/") -}}
+  (dict "lang" "sk" "code" "SK" "name" "Kensei Dojo Senec" "url" "/sk/")
+  (dict "lang" "cs" "code" "CZ" "name" "Kensei Dojo Brno" "url" "/cs/") -}}
 <nav class="lang-switch" aria-label="Jazyk">
   {{- range $language := $languages }}
   {{- $current := eq $.Lang $language.lang }}

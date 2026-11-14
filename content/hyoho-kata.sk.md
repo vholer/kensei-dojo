@@ -19,70 +19,95 @@ params:
 
 ## Systém
 
-- Tachi seiho
-- Kodachi seiho
-- Nito seiho
+- [Tachi seiho](#tachi-seiho)
+- [Kodachi seiho](#kodachi-seiho)
+- [Nito seiho](#nito-seiho)
 - Okugi tachi seiho
 - Aikuchi
-- Bo ai bo seiho
-- Tachi ai bo seiho
+- [Bo ai bo seiho](#bo-ai-bo-seiho)
+- [Tachi ai bo seiho](#tachi-ai-bo-seiho)
 - Jutte jutsu
 
-## Tachi seiho
+## Kenjutsu
 
-- Sassen
-- Hasso hidari
-- Hasso migi
-- Ukenagashi hidari
-- Ukenagashi migi
-- Mojigamae
-- Haritsuke
-- Nagashi uchi
-- Toraburi
-- Kazuki
-- Aisen uchidome
-- Amashi uchi
+<div class="kata-columns">
+<div>
 
-## Kodachi seiho
+### Tachi seiho
 
-- Sassen
-- Chudan
-- Ukenagashi
-- Mojigamae
-- Haritsuke
-- Nagashi uchi
-- Aisen
+1. Sassen
+1. Hasso hidari
+1. Hasso migi
+1. Ukenagashi hidari
+1. Ukenagashi migi
+1. Mojigamae
+1. Haritsuke
+1. Nagashi uchi
+1. Toraburi
+1. Kazuki
+1. Aisen uchidome
+1. Amashi uchi
 
-## Nito seiho
+</div>
+<div>
 
-- Chudan
-- Jodan
-- Gedan
-- Hidari wakigamae
-- Migi wakigamae
+### Kodachi seiho
 
-## Tachi ai bo seiho
+1. Sassen
+1. Chudan
+1. Ukenagashi
+1. Mojigamae
+1. Haritsuke
+1. Nagashi uchi
+1. Aisen
 
-- In no Hiki Bo
-- Yo no Hiki Bo
-- Maki Bo
-- Mojiki Bo
-- Monomi Bo
-- Kasa Hazushi Bo
-- In no Karami Bo
-- Yo no Karami Bo
-- Jodan Bo
-- Yoko Bo
-- Gedan Bo
-- Tsuki Bo
-- Kayashi Bo
+</div>
+<div>
 
-## Bo ai bo seiho
+### Nito seiho
 
-- Okoshi Bo
-- Osae Bo
-- Uke Bo
-- Iwa Komi Bo
-- Hidari Bo
-- Migi Bo
-- Tomi ai Bo
+1. Chudan
+1. Jodan
+1. Gedan
+1. Hidari wakigamae
+1. Migi wakigamae
+
+</div>
+</div>
+
+## Bojutsu
+
+<div class="kata-columns">
+<div>
+
+### Tachi ai bo seiho
+
+1. In no Hiki Bo
+1. Yo no Hiki Bo
+1. Maki Bo
+1. Mojiki Bo
+1. Monomi Bo
+1. Kasa Hazushi Bo
+1. In no Karami Bo
+1. Yo no Karami Bo
+1. Jodan Bo
+1. Yoko Bo
+1. Gedan Bo
+1. Tsuki Bo
+1. Kayashi Bo
+
+</div>
+<div>
+
+### Bo ai bo seiho
+
+1. Okoshi Bo
+1. Osae Bo
+1. Uke Bo
+1. Iwa Komi Bo
+1. Hidari Bo
+1. Migi Bo
+1. Tomi ai Bo
+
+</div>
+</div>

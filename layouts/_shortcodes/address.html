@@ -1,0 +1,21 @@
+{{- /* Registered address card: {{< address street="..." city="..." [country="..."] [ico="..."] [dic="..."] >}} */ -}}
+<div class="address-card">
+  <span class="contact-tile__icon">{{ partial "icon" "map-pin" }}</span>
+  <div class="address-card__body">
+    <address class="address-card__lines">
+      <strong>{{ .Get "street" }}</strong><br>
+      {{ .Get "city" }}{{ with .Get "country" }}<br>
+      {{ . }}{{ end }}
+    </address>
+    {{- if or (.Get "ico") (.Get "dic") }}
+    <dl class="address-card__ids">
+      {{- with .Get "ico" }}
+      <div><dt>IČO</dt><dd>{{ . }}</dd></div>
+      {{- end }}
+      {{- with .Get "dic" }}
+      <div><dt>DIČ</dt><dd>{{ . }}</dd></div>
+      {{- end }}
+    </dl>
+    {{- end }}
+  </div>
+</div>
