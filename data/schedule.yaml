@@ -1,0 +1,44 @@
+# Weekly training schedule per language (= branch): the trainings page table ({{< schedule >}})
+# and the week strip on the branch main page are both built from this.
+sk:
+  - day: "Pondelok"
+    short: "Po"
+  - day: "Utorok"
+    short: "Ut"
+    sessions:
+      - { time: "19:00 – 21:00", what: "Kenjutsu" }
+  - day: "Streda"
+    short: "St"
+  - day: "Štvrtok"
+    short: "Št"
+    sessions:
+      - { time: "19:00 – 21:00", what: "Kobudo" }
+  - day: "Piatok"
+    short: "Pi"
+    sessions:
+      - { time: "19:00 – 21:30", what: "Karate" }
+  - day: "Sobota"
+    short: "So"
+    sessions:
+      - { time: "9:00 – 11:00", what: "Kenjutsu" }
+  - day: "Nedeľa"
+    short: "Ne"
+    sessions:
+      - { time: "9:00 – 11:00", what: "Karate" }
+cs:
+  - day: "Pondělí"
+    short: "Po"
+    sessions:
+      - { time: "19:00 – 21:00", what: "Kenjutsu" }
+  - day: "Úterý"
+    short: "Út"
+  - day: "Středa"
+    short: "St"
+  - day: "Čtvrtek"
+    short: "Čt"
+  - day: "Pátek"
+    short: "Pá"
+  - day: "Sobota"
+    short: "So"
+  - day: "Neděle"
+    short: "Ne"

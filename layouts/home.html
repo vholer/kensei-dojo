@@ -1,13 +1,88 @@
-{{- /* /sk/ and /cs/: the branch main page, laid out like any other content page. The entrance between the branches is main.html at /. */ -}}
+{{- /* /sk/ and /cs/: the branch main page. Texts come from the front matter of _index.<lang>.md, the week from data/schedule.yaml.
+  The entrance between the branches is main.html at /. */ -}}
 {{ define "main" }}
-	<div class="row flex-xl-nowrap">
-		<main class="docs-content col-lg-11 col-xl-9 mx-xl-auto">
-			<div class="page-header d-flex flex-row justify-content-between align-items-start">
-				<div>
-					<h1>{{ .Title }}</h1>
-				</div>
-			</div>
-			{{ .Content }}
-		</main>
-	</div>
+{{- $p := .Params }}
+<main class="branch">
+
+  <section class="branch-hero">
+    <div class="branch-hero__body">
+      {{- with $p.place }}
+      <p class="branch-hero__place">{{ partial "flag" (dict "lang" site.Language.Lang "class" "branch-hero__flag") }}<span>{{ . }}</span></p>
+      {{- end }}
+      {{- /* "Kensei Dojo" and the city (the last word) on its own line */}}
+      {{- $words := split .Title " " }}
+      {{- $n := sub (len $words) 1 }}
+      <h1 class="branch-hero__title">{{ delimit (first $n $words) " " }} <span class="branch-hero__city">{{ index $words $n }}</span></h1>
+      <div class="branch-hero__lead">{{ .Content }}</div>
+      {{- with $p.activities }}
+      <ul class="branch-hero__activities">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>
+      {{- end }}
+      {{- with $p.actions }}
+      <div class="branch-hero__actions">
+        {{- range . }}
+        <a class="branch-btn{{ if .primary }} branch-btn--primary{{ end }}" href="{{ .url }}">{{ .label }}{{ if .primary }}<span class="branch-btn__arrow" aria-hidden="true">→</span>{{ end }}</a>
+        {{- end }}
+      </div>
+      {{- end }}
+    </div>
+    <img class="branch-hero__mark" src="/images/new-logo.png" width="2000" height="1977" alt="Kensei Dojo – logo">
+  </section>
+
+  {{- with $p.disciplines }}
+  <section class="branch-section" aria-labelledby="branch-disciplines">
+    <h2 class="branch-section__title" id="branch-disciplines">{{ .title }}</h2>
+    <div class="branch-disciplines">
+      {{- range $i, $d := .items }}
+      <article class="branch-discipline">
+        {{- /* Founder portrait, revealed on hover: optional crop of the original, then a small WebP */}}
+        {{- with $d.portrait }}
+        {{- with resources.Get .src }}
+        {{- $img := . }}
+        {{- with $d.portrait.crop }}{{ $img = $img.Crop . }}{{ end }}
+        {{- if gt $img.Width 480 }}{{ $img = $img.Resize "480x webp q75" }}{{ else }}{{ $img = $img.Process "webp q75" }}{{ end }}
+        <figure class="branch-discipline__portrait">
+          <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ $d.portrait.name }}" loading="lazy" decoding="async">
+          <figcaption>{{ $d.portrait.name }}<span>{{ $d.portrait.years }}</span></figcaption>
+        </figure>
+        {{- end }}
+        {{- end }}
+        <span class="branch-discipline__no" aria-hidden="true">{{ printf "%02d" (add $i 1) }}</span>
+        <h3 class="branch-discipline__name">{{ $d.name }}</h3>
+        <p class="branch-discipline__school">{{ $d.school }}</p>
+        <p class="branch-discipline__text">{{ $d.text }}</p>
+        {{- with $d.links }}
+        <ul class="branch-discipline__links">{{ range . }}<li><a href="{{ .url }}">{{ .label }}</a></li>{{ end }}</ul>
+        {{- end }}
+      </article>
+      {{- end }}
+    </div>
+  </section>
+  {{- end }}
+
+  {{- with $p.schedule }}
+  <section class="branch-section" aria-labelledby="branch-schedule">
+    <div class="branch-section__head">
+      <h2 class="branch-section__title" id="branch-schedule">{{ .title }}</h2>
+      {{- with .more }}
+      <a class="branch-section__more" href="{{ .url }}">{{ .label }} <span aria-hidden="true">→</span></a>
+      {{- end }}
+    </div>
+    <ol class="branch-week">
+      {{- range index site.Data.schedule site.Language.Lang }}
+      <li class="branch-week__day{{ if not .sessions }} branch-week__day--rest{{ end }}">
+        <span class="branch-week__name"><abbr title="{{ .day }}">{{ .short }}</abbr></span>
+        {{- range .sessions }}
+        <span class="branch-week__what">{{ .what }}</span>
+        <span class="branch-week__time">{{ .time }}</span>
+        {{- end }}
+      </li>
+      {{- end }}
+    </ol>
+    {{- with .place }}
+    <p class="branch-week__place">{{ partial "icon" "map-pin" }}<span>{{ . }}</span></p>
+    {{- end }}
+  </section>
+  {{- end }}
+
+</main>
 {{ end }}

@@ -17,13 +17,7 @@ params:
 
 ## Čas
 
-| Deň      | Čas           | Náplň    |
-|----------|---------------|----------|
-| Utorok   | 19:00 – 21:00 | Kenjutsu |
-| Štvrtok  | 19:00 – 21:00 | Kobudo   |
-| Piatok   | 19:00 – 21:30 | Karate   |
-| Sobota   | 9:00 – 11:00  | Kenjutsu |
-| Nedeľa   | 9:00 – 11:00  | Karate   |
+{{< schedule day="Deň" time="Čas" what="Náplň" >}}
 
 Pozn. pre nadšencov: je možné cvičiť i iné dni, než je vyššie uvedené.
 

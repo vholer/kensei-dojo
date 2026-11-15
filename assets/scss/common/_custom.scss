@@ -710,6 +710,505 @@ a.lang-switch__link--current {
     }
 }
 
+// Branch main page (/sk/, /cs/, layouts/home.html): hero, numbered discipline tiles and week strip.
+// .branch prefix on headings: the theme colours dark-mode headings with [data-bs-theme="dark"] h2.
+.branch {
+    max-width: 68rem;
+    margin-inline: auto;
+    padding-bottom: 3rem;
+    color: rgba($kd-paper, 0.86);
+
+    a:focus-visible {
+        outline: 2px solid $kd-paper;
+        outline-offset: 3px;
+    }
+}
+
+.branch-hero {
+    display: flex;
+    gap: #{"clamp(2rem, 6vw, 5rem)"};
+    align-items: center;
+    justify-content: space-between;
+    padding-block: #{"clamp(3rem, 9vw, 7rem)"} #{"clamp(2.5rem, 6vw, 4.5rem)"};
+    border-bottom: 1px solid rgba($kd-paper, 0.1);
+
+    @include media-breakpoint-down(md) {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: flex-start;
+    }
+}
+
+// The club logo (static/images/new-logo.png, white on transparent) beside the text on wider screens, above it on phones
+.branch-hero__mark {
+    flex-shrink: 0;
+    width: #{"clamp(11rem, 26vw, 19rem)"};
+    height: auto;
+    animation: branch-rise 0.9s $kd-ease both;
+
+    @include media-breakpoint-down(md) {
+        order: -1;
+        width: 6.5rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .branch-hero__mark {
+        animation: none;
+    }
+}
+
+.branch-hero__body {
+    position: relative;
+    max-width: 40rem;
+
+    > * {
+        animation: branch-rise 0.7s $kd-ease both;
+    }
+
+    @for $i from 2 through 6 {
+        > :nth-child(#{$i}) {
+            animation-delay: #{($i - 1) * 0.08}s;
+        }
+    }
+}
+
+@keyframes branch-rise {
+    from {
+        opacity: 0;
+        transform: translateY(0.75rem);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .branch-hero__body > * {
+        animation: none;
+    }
+}
+
+.branch-hero__place {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    color: rgba($kd-paper, 0.6);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.branch-hero__flag {
+    width: 1.25rem;
+    height: auto;
+    border-radius: 1px;
+}
+
+.branch h1.branch-hero__title {
+    margin: 0 0 1.5rem;
+    color: #fff;
+    font-size: #{"clamp(2.75rem, 8vw, 5.25rem)"};
+    font-weight: 600;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+}
+
+.branch-hero__city {
+    display: block;
+    color: $kd-vermilion;
+}
+
+.branch-hero__lead p {
+    margin-bottom: 1.5rem;
+    color: rgba($kd-paper, 0.75);
+    font-size: #{"clamp(1.0625rem, 2vw, 1.25rem)"};
+    line-height: 1.6;
+}
+
+// Kenjutsu • Karate • Kobudo
+.branch-hero__activities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0;
+    margin: 0 0 2rem;
+    padding: 0;
+    list-style: none;
+    color: $kd-paper;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+
+    li + li::before {
+        content: "";
+        display: inline-block;
+        width: 0.3rem;
+        height: 0.3rem;
+        margin: 0 0.9rem;
+        border-radius: 50%;
+        background: $kd-vermilion;
+        vertical-align: middle;
+    }
+}
+
+.branch-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.branch-btn {
+    display: inline-flex;
+    gap: 0.6rem;
+    align-items: center;
+    max-width: 100%;
+    min-height: 2.75rem;
+    padding: 0.7rem 1.4rem;
+    overflow-wrap: anywhere;
+    border: 1px solid rgba($kd-paper, 0.28);
+    border-radius: 2px;
+    color: $kd-paper;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+
+    &:hover {
+        border-color: $kd-paper;
+        color: #fff;
+    }
+
+    svg {
+        width: 1.15rem;
+        height: 1.15rem;
+    }
+}
+
+.branch-btn--primary {
+    border-color: $kd-vermilion;
+    background: $kd-vermilion;
+    color: #fff;
+
+    &:hover {
+        border-color: darken($kd-vermilion, 8%);
+        background: darken($kd-vermilion, 8%);
+    }
+}
+
+.branch-btn__arrow {
+    transition: transform 0.2s $kd-ease;
+}
+
+.branch-btn:hover .branch-btn__arrow {
+    transform: translateX(0.25rem);
+}
+
+.branch-section {
+    margin-top: #{"clamp(3rem, 7vw, 5rem)"};
+}
+
+.branch-section__head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+// Section title with a short red brush line in front
+.branch h2.branch-section__title {
+    display: flex;
+    gap: 0.9rem;
+    align-items: center;
+    margin: 0 0 1.75rem;
+    color: #fff;
+    font-size: #{"clamp(1.5rem, 3vw, 2rem)"};
+    font-weight: 600;
+    letter-spacing: -0.01em;
+
+    &::before {
+        content: "";
+        width: 1.75rem;
+        height: 3px;
+        border-radius: 2px;
+        background: $kd-vermilion;
+    }
+}
+
+.branch-section__more {
+    margin-bottom: 1.75rem;
+    color: rgba($kd-paper, 0.75);
+    font-size: 0.9375rem;
+    text-decoration: none;
+
+    &:hover {
+        color: #fff;
+    }
+}
+
+// Discipline tiles: big outlined number, name, school, text and links
+.branch-disciplines {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    gap: 1rem;
+}
+
+.branch-discipline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 1.75rem 1.5rem 1.5rem;
+    border-radius: 0 3px 3px 0;
+    background: rgba($kd-paper, 0.035);
+    box-shadow: inset 2px 0 0 $kd-vermilion;
+    transition: background-color 0.25s, box-shadow 0.25s;
+
+    &:hover {
+        background: rgba($kd-paper, 0.06);
+        box-shadow: inset 4px 0 0 $kd-vermilion;
+    }
+
+    // Brno has a single discipline: keep the tile a readable width instead of the full row
+    &:only-child {
+        max-width: 36rem;
+    }
+
+    > :not(.branch-discipline__portrait) {
+        position: relative;
+    }
+}
+
+// Founder portrait in the right half of the tile, in ink tones, fading into the panel towards the text.
+// Hidden until hover or keyboard focus; on touch screens (no hover) always faintly there.
+.branch-discipline {
+    overflow: hidden;
+}
+
+.branch-discipline__portrait {
+    position: absolute;
+    inset: 0 0 0 auto;
+    width: 58%;
+    margin: 0;
+    opacity: 0;
+    transition: opacity 0.5s $kd-ease;
+    pointer-events: none;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 60% 0;
+        filter: grayscale(1) contrast(1.1) brightness(0.8);
+        -webkit-mask-image: linear-gradient(to left, #000 35%, transparent);
+        mask-image: linear-gradient(to left, #000 35%, transparent);
+        transform: scale(1.06);
+        transition: transform 0.8s $kd-ease;
+    }
+
+    figcaption {
+        position: absolute;
+        top: 4.5rem;
+        right: 1.25rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        color: $kd-paper;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-shadow: 0 1px 6px $kd-ink;
+
+        span {
+            color: rgba($kd-paper, 0.65);
+            font-weight: 400;
+            font-variant-numeric: tabular-nums;
+        }
+    }
+}
+
+.branch-discipline:hover .branch-discipline__portrait,
+.branch-discipline:focus-within .branch-discipline__portrait {
+    opacity: 0.55;
+
+    img {
+        transform: scale(1);
+    }
+}
+
+// Caption only with the full reveal, so it does not sit over the links on touch screens
+.branch-discipline:not(:hover):not(:focus-within) .branch-discipline__portrait figcaption {
+    visibility: hidden;
+}
+
+@media (hover: none) {
+    .branch-discipline__portrait {
+        opacity: 0.2;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .branch-discipline__portrait,
+    .branch-discipline__portrait img {
+        transition: none;
+    }
+}
+
+.branch-discipline__no {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    color: transparent;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    -webkit-text-stroke: 1px rgba($kd-paper, 0.22);
+    font-variant-numeric: tabular-nums;
+}
+
+.branch h3.branch-discipline__name {
+    margin: 0 0 0.25rem;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.branch-discipline__school {
+    margin-bottom: 1rem;
+    color: $kd-vermilion;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.branch-discipline__text {
+    flex-grow: 1;
+    margin-bottom: 1.25rem;
+    color: rgba($kd-paper, 0.75);
+    line-height: 1.6;
+}
+
+.branch-discipline__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    margin: 0;
+    padding: 1rem 0 0;
+    border-top: 1px solid rgba($kd-paper, 0.1);
+    list-style: none;
+
+    a {
+        color: $kd-paper;
+        font-size: 0.9375rem;
+        text-decoration: underline;
+        text-decoration-color: rgba($kd-vermilion, 0.6);
+        text-underline-offset: 0.25em;
+        transition: text-decoration-color 0.2s;
+
+        &:hover {
+            color: #fff;
+            text-decoration-color: $kd-vermilion;
+        }
+    }
+}
+
+// Week strip: seven days, training days lit with a red top line, rest days faint.
+// Phones: one row per training day, rest days left out.
+.branch-week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include media-breakpoint-down(md) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.branch-week__day {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-height: 7.5rem;
+    padding: 0.9rem 0.85rem;
+    border-top: 2px solid $kd-vermilion;
+    background: rgba($kd-paper, 0.035);
+
+    @include media-breakpoint-down(md) {
+        display: grid;
+        grid-template-columns: 2.5rem 1fr auto;
+        align-items: baseline;
+        min-height: 0;
+        border-top: 0;
+        box-shadow: inset 2px 0 0 $kd-vermilion;
+
+        // A second session on the same day goes on its own line, under the first
+        .branch-week__what:nth-of-type(n + 2) {
+            grid-column: 2;
+        }
+    }
+}
+
+.branch-week__day--rest {
+    border-top-color: rgba($kd-paper, 0.12);
+    background: transparent;
+
+    .branch-week__name {
+        color: rgba($kd-paper, 0.35);
+    }
+
+    @include media-breakpoint-down(md) {
+        display: none;
+    }
+}
+
+.branch-week__name {
+    margin-bottom: auto;
+    padding-bottom: 0.75rem;
+    color: rgba($kd-paper, 0.7);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+
+    abbr {
+        text-decoration: none;
+        cursor: default;
+    }
+
+    @include media-breakpoint-down(md) {
+        padding-bottom: 0;
+    }
+}
+
+.branch-week__what {
+    color: #fff;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.branch-week__time {
+    color: rgba($kd-paper, 0.7);
+    font-size: 0.875rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.branch-week__place {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin: 1.25rem 0 0;
+    color: rgba($kd-paper, 0.75);
+
+    svg {
+        flex-shrink: 0;
+        width: 1.15rem;
+        height: 1.15rem;
+        color: $kd-vermilion;
+    }
+}
+
 // Shared frame for contact tiles, person and address cards: no outline, a soft panel with a thin red line
 // along the left edge. On hover the panel lightens and the line thickens.
 .contact-tile,

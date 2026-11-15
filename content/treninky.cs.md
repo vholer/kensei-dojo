@@ -21,9 +21,7 @@ Před návštěvou prvního tréniku napiště e-mail na adresu [info.brno@kense
 
 ## Čas
 
-| Den      | Čas           | Náplň    |
-|----------|---------------|----------|
-| Pondělí  | 19:00 – 21:00 | Kenjutsu |
+{{< schedule day="Den" time="Čas" what="Náplň" >}}
 
 ## Místo
 
