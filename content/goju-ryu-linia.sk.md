@@ -17,8 +17,10 @@ params:
 
 Línia predávania štýlu **Shodokan Goju ryu**:
 
+{{< lineage >}}
 1. Kanryo Higaonna
 2. Choyun Miyagi
 3. Seiko Higa
 4. Seikichi Higa
 5. Choyu Kiyuna
+{{< /lineage >}}

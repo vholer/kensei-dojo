@@ -1,0 +1,5 @@
+{{- /* Lineage as a timeline of generations: wrap a Markdown numbered list in {{< lineage >}} ... {{< /lineage >}}.
+     The first entry is the founder. */ -}}
+<div class="lineage">
+{{ .Inner | .Page.RenderString }}
+</div>

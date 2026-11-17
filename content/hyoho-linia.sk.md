@@ -17,6 +17,7 @@ params:
 
 Línia predávania školy **Hyoho Niten Ichi-ryu**:
 
+{{< lineage >}}
 1. Miyamoto Musashi Fujiwara no Genshin
 2. Terao Kyumanosuke Nobuyuki
 3. Terao Kyoemon Katsuyuki
@@ -29,3 +30,4 @@ Línia predávania školy **Hyoho Niten Ichi-ryu**:
 10. Imai Masayuki Nobukatsu
 11. Iwami Toshio Harukatsu
 12. Kajiya Takanori
+{{< /lineage >}}
