@@ -7,11 +7,8 @@ lastmod: 2026-11-14T00:00:00+01:00
 draft: false
 params:
   # Layout: layouts/home.html; the week strip comes from data/schedule.yaml
-  place: "Brno · Česko"
+  place: "Česko"
   activities: ["Kenjutsu"]
-  actions:
-    - { label: "Rozvrh tréninků", url: "/cs/treninky/", primary: true }
-    - { label: "Kontakt", url: "/cs/kontakt/" }
   firstVisit: "Chcete přijít poprvé? Před prvním tréninkem nám [napište](/cs/kontakt/)."
   disciplines:
     title: "Co cvičíme"
@@ -22,6 +19,7 @@ params:
         text: "Umění japonského meče. Škola, kterou založil Miyamoto Musaši, se systémem kata s jedním i dvěma meči a s holí."
   schedule:
     title: "Tréninky"
+    url: "/cs/treninky/"
     place: "Tělocvična ZŠ, Cacovická 1228/4"
   seo:
     title: "Kensei Dojo Brno"

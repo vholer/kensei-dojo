@@ -73,7 +73,7 @@
   {{- with $p.schedule }}
   <section class="branch-section" aria-labelledby="branch-schedule">
     <div class="branch-section__head">
-      <h2 class="branch-section__title" id="branch-schedule">{{ .title }}</h2>
+      <h2 class="branch-section__title" id="branch-schedule">{{ with .url }}<a class="branch-section__link" href="{{ . }}">{{ $.Params.schedule.title }} <span aria-hidden="true">→</span></a>{{ else }}{{ .title }}{{ end }}</h2>
       {{- with .more }}
       <a class="branch-section__more" href="{{ .url }}">{{ .label }} <span aria-hidden="true">→</span></a>
       {{- end }}

@@ -7,11 +7,8 @@ lastmod: 2026-11-14T00:00:00+01:00
 draft: false
 params:
   # Layout: layouts/home.html; the week strip comes from data/schedule.yaml
-  place: "Senec · Slovensko"
+  place: "Slovensko"
   activities: ["Kenjutsu", "Karate", "Kobudo"]
-  actions:
-    - { label: "Rozvrh tréningov", url: "/sk/treningy/", primary: true }
-    - { label: "Kontakt", url: "/sk/kontakt/" }
   firstVisit: "Chcete prísť prvý raz? [Napíšte nám](/sk/kontakt/), radi vás privítame."
   disciplines:
     title: "Čo cvičíme"
@@ -37,6 +34,7 @@ params:
         text: "Tradičné okinawské zbrane, ktoré dopĺňajú tréning karate."
   schedule:
     title: "Tréningy"
+    url: "/sk/treningy/"
     place: "Obecný klub Blatné, Šarfická 300/37"
   seo:
     title: "Kensei Dojo Senec"
