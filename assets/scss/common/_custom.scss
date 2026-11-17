@@ -436,6 +436,11 @@ a.lang-switch__link--current {
         }
     }
 
+    // The theme drops the line on main pages (body.home); /sk/ and /cs/ keep it like every other page
+    body.home .navbar {
+        border-bottom: 1px solid rgba($kd-paper, 0.1);
+    }
+
     .navbar .navbar-brand {
         display: inline-flex;
         gap: 0.625rem;
@@ -746,8 +751,7 @@ a.lang-switch__link--current {
     gap: #{"clamp(2rem, 6vw, 5rem)"};
     align-items: center;
     justify-content: space-between;
-    padding-block: #{"clamp(3rem, 9vw, 7rem)"} #{"clamp(2.5rem, 6vw, 4.5rem)"};
-    border-bottom: 1px solid rgba($kd-paper, 0.1);
+    padding-block: #{"clamp(2rem, 6vw, 4.5rem)"} #{"clamp(0.5rem, 1.5vw, 1rem)"};
 
     @include media-breakpoint-down(md) {
         flex-direction: column;
@@ -756,39 +760,51 @@ a.lang-switch__link--current {
     }
 }
 
-.branch-hero__body {
-    position: relative;
-    max-width: 40rem;
+// Kuniyoshi print of Musashi with two wooden swords beside the title. It rises slowly out of the black,
+// and shows through a soft circle that fades to black. Wide screens only.
+.branch-hero__art {
+    flex-shrink: 0;
+    width: #{"clamp(16rem, 36vw, 32rem)"};
+    height: auto;
+    -webkit-mask-image: radial-gradient(circle closest-side at 50% 50%, #000 85%, transparent 100%);
+    mask-image: radial-gradient(circle closest-side at 50% 50%, #000 85%, transparent 100%);
+    // Opacity only (no filter), so the fade runs on the GPU without repaints; timed with the title's entrance
+    animation: kd-hero-art-in 1.2s $kd-ease 0.15s both;
+    will-change: opacity;
 
-    > * {
-        animation: branch-rise 0.7s $kd-ease both;
-    }
-
-    @for $i from 2 through 6 {
-        > :nth-child(#{$i}) {
-            animation-delay: #{($i - 1) * 0.08}s;
-        }
+    @include media-breakpoint-down(md) {
+        display: none;
     }
 }
 
-@keyframes branch-rise {
+@keyframes kd-hero-art-in {
     from {
         opacity: 0;
-        transform: translateY(0.75rem);
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .branch-hero__body > * {
+    .branch-hero__art {
         animation: none;
     }
+}
+
+// The text is shown at once; only the image beside it fades in
+// Just below the intro, the first section starts close to it
+.branch-hero + .branch-section {
+    margin-top: 1rem;
+}
+
+.branch-hero__body {
+    position: relative;
+    max-width: 40rem;
 }
 
 .branch-hero__place {
     display: flex;
     gap: 0.6rem;
     align-items: center;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1rem;
     color: rgba($kd-paper, 0.6);
     font-size: 0.8125rem;
     font-weight: 500;
@@ -803,9 +819,9 @@ a.lang-switch__link--current {
 }
 
 .branch h1.branch-hero__title {
-    margin: 0 0 2.25rem;
+    margin: 0 0 1.75rem;
     color: #fff;
-    font-size: #{"clamp(2.75rem, 8vw, 5.25rem)"};
+    font-size: #{"clamp(2.5rem, 7vw, 4.5rem)"};
     font-weight: 600;
     line-height: 0.95;
     letter-spacing: -0.02em;
@@ -886,7 +902,7 @@ a.lang-switch__link--current {
 }
 
 .branch-section {
-    margin-top: #{"clamp(3rem, 7vw, 5rem)"};
+    margin-top: #{"clamp(1.75rem, 4vw, 2.5rem)"};
 }
 
 .branch-section__head {
@@ -902,9 +918,9 @@ a.lang-switch__link--current {
     display: flex;
     gap: 0.9rem;
     align-items: center;
-    margin: 0 0 1.75rem;
+    margin: 0 0 1rem;
     color: #fff;
-    font-size: #{"clamp(1.5rem, 3vw, 2rem)"};
+    font-size: #{"clamp(1.375rem, 2.5vw, 1.75rem)"};
     font-weight: 600;
     letter-spacing: -0.01em;
 
@@ -939,7 +955,7 @@ a.lang-switch__link--current {
     position: relative;
     display: flex;
     flex-direction: column;
-    padding: 1.75rem 1.5rem 1.5rem;
+    padding: 1.25rem 1.125rem 1.125rem;
     border-radius: 0 3px 3px 0;
     background: rgba($kd-paper, 0.035);
     box-shadow: inset 2px 0 0 $kd-vermilion;
@@ -1101,8 +1117,8 @@ a.lang-switch__link--current {
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
-    min-height: 7.5rem;
-    padding: 0.9rem 0.85rem;
+    min-height: 5rem;
+    padding: 0.625rem;
     border-top: 2px solid $kd-vermilion;
     background: rgba($kd-paper, 0.035);
 
