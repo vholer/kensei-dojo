@@ -12,6 +12,7 @@ params:
   actions:
     - { label: "Rozvrh tréninků", url: "/cs/treninky/", primary: true }
     - { label: "Kontakt", url: "/cs/kontakt/" }
+  firstVisit: "Chcete přijít poprvé? Před prvním tréninkem nám [napište](/cs/kontakt/)."
   disciplines:
     title: "Co cvičíme"
     items:
@@ -22,7 +23,6 @@ params:
   schedule:
     title: "Tréninky"
     place: "Tělocvična ZŠ, Cacovická 1228/4"
-    more: { label: "Rozvrh, mapa a přihlašování", url: "/cs/treninky/" }
   seo:
     title: "Kensei Dojo Brno"
     description: ""

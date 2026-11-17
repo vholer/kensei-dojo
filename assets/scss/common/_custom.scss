@@ -371,9 +371,8 @@ a.lang-switch__link {
     padding: 0.25rem 0.5rem;
     border-bottom: 2px solid transparent;
     color: rgba($kd-paper, 0.72);
-    font-size: 0.875rem;
+    font-size: 0.9375rem; // city names, not two-letter codes: normal size and spacing
     font-weight: 500;
-    letter-spacing: 0.08em;
     text-decoration: none;
     transition: color 0.2s ease;
 
@@ -817,6 +816,24 @@ a.lang-switch__link--current {
     color: $kd-vermilion;
 }
 
+// One line under the buttons for newcomers: how to come to a first training
+.branch-hero__first {
+    margin: 1.25rem 0 0;
+    color: rgba($kd-paper, 0.7);
+    font-size: 0.9375rem;
+
+    a {
+        color: $kd-paper;
+        text-decoration: underline;
+        text-decoration-color: $kd-vermilion;
+        text-underline-offset: 0.2em;
+
+        &:hover {
+            color: #fff;
+        }
+    }
+}
+
 .branch-hero__actions {
     display: flex;
     flex-wrap: wrap;
@@ -1005,12 +1022,6 @@ a.lang-switch__link--current {
     visibility: hidden;
 }
 
-// The caption takes the top-right corner, so the number steps aside meanwhile
-.branch-discipline:hover .branch-discipline__no,
-.branch-discipline:focus-within .branch-discipline__no {
-    opacity: 0;
-}
-
 @media (hover: none) {
     .branch-discipline__portrait {
         opacity: 0.2;
@@ -1019,24 +1030,9 @@ a.lang-switch__link--current {
 
 @media (prefers-reduced-motion: reduce) {
     .branch-discipline__portrait,
-    .branch-discipline__portrait img,
-    .branch-discipline__no {
+    .branch-discipline__portrait img {
         transition: none;
     }
-}
-
-// Fades out while the portrait caption is shown (see above)
-.branch-discipline__no {
-    position: absolute;
-    top: 1rem;
-    right: 1.25rem;
-    color: transparent;
-    font-size: 3rem;
-    font-weight: 700;
-    line-height: 1;
-    -webkit-text-stroke: 1px rgba($kd-paper, 0.22);
-    font-variant-numeric: tabular-nums;
-    transition: opacity 0.3s ease;
 }
 
 .branch h3.branch-discipline__name {

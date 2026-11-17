@@ -12,6 +12,7 @@ params:
   actions:
     - { label: "Rozvrh tréningov", url: "/sk/treningy/", primary: true }
     - { label: "Kontakt", url: "/sk/kontakt/" }
+  firstVisit: "Chcete prísť prvý raz? [Napíšte nám](/sk/kontakt/), radi vás privítame."
   disciplines:
     title: "Čo cvičíme"
     items:
@@ -37,7 +38,6 @@ params:
   schedule:
     title: "Tréningy"
     place: "Obecný klub Blatné, Šarfická 300/37"
-    more: { label: "Rozvrh a mapa", url: "/sk/treningy/" }
   seo:
     title: "Kensei Dojo Senec"
     description: ""

@@ -1,7 +1,7 @@
 {{- $languages := slice
-  (dict "lang" "sk" "code" "SK" "name" "Kensei Dojo Senec" "url" "/sk/")
-  (dict "lang" "cs" "code" "CZ" "name" "Kensei Dojo Brno" "url" "/cs/") -}}
-<nav class="lang-switch" aria-label="Jazyk">
+  (dict "lang" "sk" "code" "Senec" "name" "Kensei Dojo Senec" "url" "/sk/")
+  (dict "lang" "cs" "code" "Brno" "name" "Kensei Dojo Brno" "url" "/cs/") -}}
+<nav class="lang-switch" aria-label="Pobočka">
   {{- range $language := $languages }}
   {{- $current := eq $.Lang $language.lang }}
   <a class="lang-switch__link{{ if $current }} lang-switch__link--current{{ end }}" href="{{ $language.url }}" hreflang="{{ $language.lang }}" lang="{{ $language.lang }}" aria-label="{{ $language.name }}"{{ if eq $.RelPermalink $language.url }} aria-current="page"{{ end }}>

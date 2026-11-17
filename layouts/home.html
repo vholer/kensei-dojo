@@ -20,6 +20,9 @@
         {{- end }}
       </div>
       {{- end }}
+      {{- with $p.firstvisit }}
+      <p class="branch-hero__first">{{ . | markdownify }}</p>
+      {{- end }}
     </div>
   </section>
 
@@ -27,7 +30,7 @@
   <section class="branch-section" aria-labelledby="branch-disciplines">
     <h2 class="branch-section__title" id="branch-disciplines">{{ .title }}</h2>
     <div class="branch-disciplines">
-      {{- range $i, $d := .items }}
+      {{- range $d := .items }}
       <article class="branch-discipline">
         {{- /* Founder portrait, revealed on hover: optional crop of the original, then a small WebP */}}
         {{- with $d.portrait }}
@@ -41,7 +44,6 @@
         </figure>
         {{- end }}
         {{- end }}
-        <span class="branch-discipline__no" aria-hidden="true">{{ printf "%02d" (add $i 1) }}</span>
         <h3 class="branch-discipline__name">{{ $d.name }}</h3>
         <p class="branch-discipline__school">{{ $d.school }}</p>
         <p class="branch-discipline__text">{{ $d.text }}</p>
