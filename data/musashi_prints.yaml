@@ -1,32 +1,24 @@
 # Historical prints of Miyamoto Musashi for the branch page hero (layouts/home.html): one is picked at random
 # on each visit (assets/js/hero-art.js); the first one is shown without JavaScript.
-# All public domain, from Wikimedia Commons. Each is cropped to a square (side = the shorter edge, or `crop`)
-# at `anchor`, so the circular mask frames Musashi.
+# All public domain, from Wikimedia Commons. Shown whole (resized to 960 px wide); CSS crops them to the intro.
 - file: musashi-kuniyoshi-bokuden.jpg
   artist: Utagawa Kuniyoshi
-  crop: "1000x1000 Center"
   source: "File:Miyamoto Musashi 宮本 武蔵 (BM 2008,3037.15507).jpg"
 - file: musashi-yoshitoshi-bokuden.jpg
   artist: Tsukioka Yoshitoshi
-  anchor: Center
   source: "File:Musashi vs. Bokuden.jpg"
 - file: musashi-yoshifusa-ganryujima.png
   artist: Utagawa Yoshifusa
-  anchor: Center
   source: "File:Miyamoto-Musashi-Fights-Sasaki-Kojiro-at-Ganryujima-Ukiyo-e.png"
 - file: musashi-yoshitoshi-tengu.jpg
   artist: Tsukioka Yoshitoshi
-  anchor: Bottom
   source: "File:Miyamoto Musashi Slashing a Tengu LACMA M.84.31.444.jpg"
 - file: musashi-yoshitoshi-bat.jpg
   artist: Tsukioka Yoshitoshi
-  anchor: Center
   source: "File:Miyamoto Musashi Slashing a Bat LACMA M.84.31.357.jpg"
 - file: musashi-kuniyoshi-bat.jpg
   artist: Utagawa Kuniyoshi
-  anchor: Center
   source: "File:Kuniyoshi Miyamoto Musashi.jpg"
 - file: musashi-kuniyoshi-salamander.jpg
   artist: Utagawa Kuniyoshi
-  anchor: Center
   source: "File:Miyamoto Musashi 宮本無三四 (BM 2008,3037.15803).jpg"

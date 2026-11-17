@@ -24,20 +24,18 @@
       <p class="branch-hero__first">{{ . | markdownify }}</p>
       {{- end }}
     </div>
-    {{- /* Historical prints of Musashi (data/musashi_prints.yaml), squared for the circular mask.
+    {{- /* Historical prints of Musashi (data/musashi_prints.yaml), whole; CSS crops them to the intro.
       The first is in src (no JavaScript); hero-art.js, right after the image, picks one of all at random. */}}
     {{- $prints := slice }}
     {{- range $p := site.Data.musashi_prints }}
     {{- with resources.Get (printf "images/hero/%s" $p.file) }}
-    {{- $side := int (math.Min .Width .Height) }}
-    {{- $crop := $p.crop | default (printf "%dx%d %s" $side $side ($p.anchor | default "Center")) }}
-    {{- $img := (.Crop $crop).Resize "640x640 webp q78" }}
+    {{- $img := .Resize "960x webp q78" }}
     {{- $alt := printf (cond (eq site.Language.Lang "cs") "Miyamoto Musaši – dřevořez, %s" "Miyamoto Musaši – drevorez, %s") $p.artist }}
-    {{- $prints = $prints | append (slice (dict "src" $img.RelPermalink "alt" $alt)) }}
+    {{- $prints = $prints | append (slice (dict "src" $img.RelPermalink "alt" $alt "w" $img.Width "h" $img.Height)) }}
     {{- end }}
     {{- end }}
     {{- with index $prints 0 }}
-    <img class="branch-hero__art" src="{{ .src }}" width="640" height="640" alt="{{ .alt }}" data-prints="{{ jsonify $prints }}" fetchpriority="high">
+    <img class="branch-hero__art" src="{{ .src }}" width="{{ .w }}" height="{{ .h }}" alt="{{ .alt }}" data-prints="{{ jsonify $prints }}" fetchpriority="high">
     {{- end }}
     {{- with resources.Get "js/hero-art.js" }}{{ with . | minify | fingerprint }}<script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>{{ end }}{{ end }}
   </section>

@@ -748,34 +748,55 @@ a.lang-switch__link--current {
     }
 }
 
+// Intro: the text on the left, a large Musashi print behind it filling the right half of the screen
+// (like nitenichiryu.cz). On narrower screens the print is a banner above the text.
 .branch-hero {
-    display: flex;
-    gap: #{"clamp(2rem, 6vw, 5rem)"};
-    align-items: center;
-    justify-content: space-between;
-    padding-block: #{"clamp(2rem, 6vw, 4.5rem)"} #{"clamp(0.5rem, 1.5vw, 1rem)"};
+    position: relative;
+    isolation: isolate;
+    padding-block: 19rem #{"clamp(0.5rem, 1.5vw, 1rem)"};
 
-    @include media-breakpoint-down(md) {
-        flex-direction: column;
-        gap: 2rem;
-        align-items: flex-start;
+    @include media-breakpoint-up(md) {
+        padding-top: 25rem;
+    }
+
+    @include media-breakpoint-up(lg) {
+        display: flex;
+        align-items: center;
+        min-height: 34rem;
+        padding-block: 3rem;
     }
 }
 
-// Kuniyoshi print of Musashi with two wooden swords beside the title. It rises slowly out of the black,
-// and shows through a soft circle that fades to black. Wide screens only.
+// The print (one of data/musashi_prints.yaml, picked at random): a banner across the page width, from lg the right
+// half of the page (ending where the content ends) at the full height of the intro. It fades into the black towards the text.
 .branch-hero__art {
-    flex-shrink: 0;
-    width: #{"clamp(14rem, 31vw, 27rem)"};
-    height: auto;
-    -webkit-mask-image: radial-gradient(circle closest-side at 50% 50%, #000 85%, transparent 100%);
-    mask-image: radial-gradient(circle closest-side at 50% 50%, #000 85%, transparent 100%);
-    // Opacity only (no filter), so the fade runs on the GPU without repaints; timed with the title's entrance
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 18rem;
+    object-fit: cover;
+    object-position: 50% 25%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent);
+    mask-image: linear-gradient(to bottom, #000 55%, transparent);
+    // Opacity only (no filter), so the fade runs on the GPU without repaints; timed with the title entrance
     animation: kd-hero-art-in 1.2s $kd-ease 0.15s both;
     will-change: opacity;
 
-    @include media-breakpoint-down(md) {
-        display: none;
+    @include media-breakpoint-up(md) {
+        height: 24rem;
+    }
+
+    @include media-breakpoint-up(lg) {
+        right: 0;
+        left: auto;
+        width: 50%;
+        max-width: 48rem;
+        height: 100%;
+        object-position: 50% 20%;
+        -webkit-mask-image: linear-gradient(to right, transparent, rgba(#000, 0.15) 10%, #000 35%);
+        mask-image: linear-gradient(to right, transparent, rgba(#000, 0.15) 10%, #000 35%);
     }
 }
 
