@@ -16,8 +16,8 @@ params:
     title: "Čo cvičíme"
     items:
       - name: "Kenjutsu"
-        school: "Hyoho Niten Ichiryu"
-        portrait: { src: "images/founders/musashi.jpg", crop: "1088x1100 Top", name: "Miyamoto Musashi", years: "1584 – 1645" }
+        school: "Hyoho Niten Ichi-ryu"
+        portrait: { src: "images/founders/musashi.jpg", crop: "1088x1100 Top", name: "Miyamoto Musashi" }
         text: "Umenie japonského meča. Škola, ktorú založil Miyamoto Musaši, so systémom kata s jedným aj dvoma mečmi a s palicou."
         links:
           - { label: "História", url: "/sk/kenjutsu-historie/" }
@@ -25,7 +25,7 @@ params:
           - { label: "Kata", url: "/sk/hyoho-kata/" }
       - name: "Karate"
         school: "Goju ryu Shodokan"
-        portrait: { src: "images/founders/higaonna.jpg", name: "Kanryō Higaonna", years: "1853 – 1915" }
+        portrait: { src: "images/founders/higaonna.jpg", name: "Kanryō Higaonna" }
         text: "Okinawské karate, ktoré spája tvrdé a mäkké techniky. Žiacke, dýchacie a majstrovské kata."
         links:
           - { label: "História", url: "/sk/karate-historia/" }

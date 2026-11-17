@@ -1,6 +1,6 @@
 ---
-title: "Hyoho Niten Ichiryu – systém kata"
-description: "Prehľad systému kata školy Hyoho Niten Ichiryu – tachi seiho, kodachi seiho, nito seiho a ďalšie."
+title: "Hyoho Niten Ichi-ryu – systém kata"
+description: "Prehľad systému kata školy Hyoho Niten Ichi-ryu – tachi seiho, kodachi seiho, nito seiho a ďalšie."
 summary: ""
 date: 2023-09-07T16:12:03+02:00
 lastmod: 2026-09-19T00:00:00+02:00
@@ -15,7 +15,7 @@ params:
     robots: ""
 ---
 
-<img src="/images/kensei/hyohokata.jpg" alt="Kata Hyoho Niten Ichiryu" class="page-figure page-figure--right">
+<img src="/images/kensei/hyohokata.jpg" alt="Kata Hyoho Niten Ichi-ryu" class="page-figure page-figure--right">
 
 ## Systém
 

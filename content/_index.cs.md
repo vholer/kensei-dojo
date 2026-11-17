@@ -1,6 +1,6 @@
 ---
 title: "Kensei Dojo Brno"
-description: "Kensei Dojo Brno – česká pobočka klubu tradičního japonského šermu (kenjutsu), škola Hyoho Niten Ichiryu."
+description: "Kensei Dojo Brno – česká pobočka klubu tradičního japonského šermu (kenjutsu), škola Hyoho Niten Ichi-ryu."
 summary: ""
 date: 2023-09-07T16:33:54+02:00
 lastmod: 2026-11-14T00:00:00+01:00
@@ -16,8 +16,8 @@ params:
     title: "Co cvičíme"
     items:
       - name: "Kenjutsu"
-        school: "Hyoho Niten Ichiryu"
-        portrait: { src: "images/founders/musashi.jpg", crop: "1088x1100 Top", name: "Miyamoto Musashi", years: "1584 – 1645" }
+        school: "Hyoho Niten Ichi-ryu"
+        portrait: { src: "images/founders/musashi.jpg", crop: "1088x1100 Top", name: "Miyamoto Musashi" }
         text: "Umění japonského meče. Škola, kterou založil Miyamoto Musaši, se systémem kata s jedním i dvěma meči a s holí."
   schedule:
     title: "Tréninky"

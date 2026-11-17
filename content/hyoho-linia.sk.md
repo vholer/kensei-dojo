@@ -1,6 +1,6 @@
 ---
-title: "Hyoho Niten Ichiryu – línia"
-description: "Línia predávania školy Hyoho Niten Ichiryu od zakladateľa Miyamota Musašiho až po súčasnosť."
+title: "Hyoho Niten Ichi-ryu – línia"
+description: "Línia predávania školy Hyoho Niten Ichi-ryu od zakladateľa Miyamota Musašiho až po súčasnosť."
 summary: ""
 date: 2023-09-07T16:12:03+02:00
 lastmod: 2026-09-19T00:00:00+02:00
@@ -15,7 +15,7 @@ params:
     robots: ""
 ---
 
-Línia predávania školy **Hyoho Niten Ichiryu**:
+Línia predávania školy **Hyoho Niten Ichi-ryu**:
 
 1. Miyamoto Musashi Fujiwara no Genshin
 2. Terao Kyumanosuke Nobuyuki

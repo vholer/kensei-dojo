@@ -38,13 +38,13 @@
 
 [[main]]
   parent = "kenjutsu"
-  name = "Hyoho Niten Ichiryu – línia"
+  name = "Hyoho Niten Ichi-ryu – línia"
   url = "/sk/hyoho-linia/"
   weight = 20
 
 [[main]]
   parent = "kenjutsu"
-  name = "Hyoho Niten Ichiryu – kata"
+  name = "Hyoho Niten Ichi-ryu – kata"
   url = "/sk/hyoho-kata/"
   weight = 30
 

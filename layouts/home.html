@@ -13,10 +13,6 @@
       {{- $words := split .Title " " }}
       {{- $n := sub (len $words) 1 }}
       <h1 class="branch-hero__title">{{ delimit (first $n $words) " " }} <span class="branch-hero__city">{{ index $words $n }}</span></h1>
-      <div class="branch-hero__lead">{{ .Content }}</div>
-      {{- with $p.activities }}
-      <ul class="branch-hero__activities">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>
-      {{- end }}
       {{- with $p.actions }}
       <div class="branch-hero__actions">
         {{- range . }}
@@ -25,7 +21,6 @@
       </div>
       {{- end }}
     </div>
-    <img class="branch-hero__mark" src="/images/new-logo.png" width="2000" height="1977" alt="Kensei Dojo – logo">
   </section>
 
   {{- with $p.disciplines }}
@@ -40,9 +35,9 @@
         {{- $img := . }}
         {{- with $d.portrait.crop }}{{ $img = $img.Crop . }}{{ end }}
         {{- if gt $img.Width 480 }}{{ $img = $img.Resize "480x webp q75" }}{{ else }}{{ $img = $img.Process "webp q75" }}{{ end }}
-        <figure class="branch-discipline__portrait">
+        <figure class="branch-discipline__portrait branch-discipline__portrait--{{ replaceRE `\.[^.]+$` "" (path.Base $d.portrait.src) }}">
           <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ $d.portrait.name }}" loading="lazy" decoding="async">
-          <figcaption>{{ $d.portrait.name }}<span>{{ $d.portrait.years }}</span></figcaption>
+          <figcaption>{{ $d.portrait.name }}</figcaption>
         </figure>
         {{- end }}
         {{- end }}

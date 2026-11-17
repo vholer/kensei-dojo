@@ -7,6 +7,24 @@ $kd-paper: #f2ede4;
 $kd-vermilion: #d7322d;
 $kd-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 
+// Site font: Jost with Latin Extended, self-hosted like on nitenichiryu.cz. The theme ships Jost in Latin only,
+// so č, š, ž, ľ, ř, ů … fell back to a system font. "Kensei Jost" is put first in $font-family-sans-serif.
+$kd-jost-latin: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+$kd-jost-latin-ext: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+
+@each $weight, $style in (400 normal, 500 normal, 700 normal, 400 italic) {
+    @each $subset, $range in (latin: $kd-jost-latin, latin-ext: $kd-jost-latin-ext) {
+        @font-face {
+            font-family: "Kensei Jost";
+            font-style: $style;
+            font-weight: $weight;
+            font-display: swap;
+            src: url("/fonts/jost/jost-#{$subset}-#{$weight}-#{$style}.woff2") format("woff2");
+            unicode-range: $range;
+        }
+    }
+}
+
 // Self-hosted (the CSP allows fonts only from this site): Shippori Mincho B1 cut down to the four characters 剣聖道場
 @each $file, $char in (93: U+5263, 94: U+8056, 114: U+9053, 117: U+5834) {
     @font-face {
@@ -739,25 +757,6 @@ a.lang-switch__link--current {
     }
 }
 
-// The club logo (static/images/new-logo.png, white on transparent) beside the text on wider screens, above it on phones
-.branch-hero__mark {
-    flex-shrink: 0;
-    width: #{"clamp(11rem, 26vw, 19rem)"};
-    height: auto;
-    animation: branch-rise 0.9s $kd-ease both;
-
-    @include media-breakpoint-down(md) {
-        order: -1;
-        width: 6.5rem;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .branch-hero__mark {
-        animation: none;
-    }
-}
-
 .branch-hero__body {
     position: relative;
     max-width: 40rem;
@@ -805,7 +804,7 @@ a.lang-switch__link--current {
 }
 
 .branch h1.branch-hero__title {
-    margin: 0 0 1.5rem;
+    margin: 0 0 2.25rem;
     color: #fff;
     font-size: #{"clamp(2.75rem, 8vw, 5.25rem)"};
     font-weight: 600;
@@ -816,39 +815,6 @@ a.lang-switch__link--current {
 .branch-hero__city {
     display: block;
     color: $kd-vermilion;
-}
-
-.branch-hero__lead p {
-    margin-bottom: 1.5rem;
-    color: rgba($kd-paper, 0.75);
-    font-size: #{"clamp(1.0625rem, 2vw, 1.25rem)"};
-    line-height: 1.6;
-}
-
-// Kenjutsu • Karate • Kobudo
-.branch-hero__activities {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem 0;
-    margin: 0 0 2rem;
-    padding: 0;
-    list-style: none;
-    color: $kd-paper;
-    font-size: 0.875rem;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-
-    li + li::before {
-        content: "";
-        display: inline-block;
-        width: 0.3rem;
-        height: 0.3rem;
-        margin: 0 0.9rem;
-        border-radius: 50%;
-        background: $kd-vermilion;
-        vertical-align: middle;
-    }
 }
 
 .branch-hero__actions {
@@ -1000,13 +966,14 @@ a.lang-switch__link--current {
         filter: grayscale(1) contrast(1.1) brightness(0.8);
         -webkit-mask-image: linear-gradient(to left, #000 35%, transparent);
         mask-image: linear-gradient(to left, #000 35%, transparent);
-        transform: scale(1.06);
+        // --kd-portrait-shift moves a portrait sideways in its box (it fills the width, so object-position cannot)
+        transform: translateX(var(--kd-portrait-shift, 0)) scale(1.06);
         transition: transform 0.8s $kd-ease;
     }
 
     figcaption {
         position: absolute;
-        top: 4.5rem;
+        top: 0.75rem;
         right: 1.25rem;
         display: flex;
         flex-direction: column;
@@ -1016,12 +983,6 @@ a.lang-switch__link--current {
         font-weight: 600;
         letter-spacing: 0.08em;
         text-shadow: 0 1px 6px $kd-ink;
-
-        span {
-            color: rgba($kd-paper, 0.65);
-            font-weight: 400;
-            font-variant-numeric: tabular-nums;
-        }
     }
 }
 
@@ -1030,13 +991,24 @@ a.lang-switch__link--current {
     opacity: 0.55;
 
     img {
-        transform: scale(1);
+        transform: translateX(var(--kd-portrait-shift, 0)) scale(1);
     }
+}
+
+// Class from the file name (template): the Higaonna photo sits further right
+.branch-discipline__portrait--higaonna {
+    --kd-portrait-shift: 20%;
 }
 
 // Caption only with the full reveal, so it does not sit over the links on touch screens
 .branch-discipline:not(:hover):not(:focus-within) .branch-discipline__portrait figcaption {
     visibility: hidden;
+}
+
+// The caption takes the top-right corner, so the number steps aside meanwhile
+.branch-discipline:hover .branch-discipline__no,
+.branch-discipline:focus-within .branch-discipline__no {
+    opacity: 0;
 }
 
 @media (hover: none) {
@@ -1047,11 +1019,13 @@ a.lang-switch__link--current {
 
 @media (prefers-reduced-motion: reduce) {
     .branch-discipline__portrait,
-    .branch-discipline__portrait img {
+    .branch-discipline__portrait img,
+    .branch-discipline__no {
         transition: none;
     }
 }
 
+// Fades out while the portrait caption is shown (see above)
 .branch-discipline__no {
     position: absolute;
     top: 1rem;
@@ -1062,6 +1036,7 @@ a.lang-switch__link--current {
     line-height: 1;
     -webkit-text-stroke: 1px rgba($kd-paper, 0.22);
     font-variant-numeric: tabular-nums;
+    transition: opacity 0.3s ease;
 }
 
 .branch h3.branch-discipline__name {
