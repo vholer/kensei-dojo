@@ -24,12 +24,22 @@
       <p class="branch-hero__first">{{ . | markdownify }}</p>
       {{- end }}
     </div>
-    {{- /* Utagawa Kuniyoshi, c. 1845: Musashi with two wooden swords spars with Tsukahara Bokuden, who parries with pot lids.
-      British Museum 2008,3037.15507 via Wikimedia Commons, public domain. Cropped to the two figures. */}}
-    {{- with resources.Get "images/hero/musashi-kuniyoshi.jpg" }}
-    {{- $img := (.Crop "1000x820 Center").Resize "720x webp q80" }}
-    <img class="branch-hero__art" src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ if eq site.Language.Lang "cs" }}Miyamoto Musaši se dvěma dřevěnými meči – dřevořez Utagawy Kunijošiho{{ else }}Miyamoto Musaši s dvoma drevenými mečmi – drevorez Utagawu Kunijošiho{{ end }}" fetchpriority="high">
+    {{- /* Historical prints of Musashi (data/musashi_prints.yaml), squared for the circular mask.
+      The first is in src (no JavaScript); hero-art.js, right after the image, picks one of all at random. */}}
+    {{- $prints := slice }}
+    {{- range $p := site.Data.musashi_prints }}
+    {{- with resources.Get (printf "images/hero/%s" $p.file) }}
+    {{- $side := int (math.Min .Width .Height) }}
+    {{- $crop := $p.crop | default (printf "%dx%d %s" $side $side ($p.anchor | default "Center")) }}
+    {{- $img := (.Crop $crop).Resize "640x640 webp q78" }}
+    {{- $alt := printf (cond (eq site.Language.Lang "cs") "Miyamoto Musaši – dřevořez, %s" "Miyamoto Musaši – drevorez, %s") $p.artist }}
+    {{- $prints = $prints | append (slice (dict "src" $img.RelPermalink "alt" $alt)) }}
     {{- end }}
+    {{- end }}
+    {{- with index $prints 0 }}
+    <img class="branch-hero__art" src="{{ .src }}" width="640" height="640" alt="{{ .alt }}" data-prints="{{ jsonify $prints }}" fetchpriority="high">
+    {{- end }}
+    {{- with resources.Get "js/hero-art.js" }}{{ with . | minify | fingerprint }}<script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>{{ end }}{{ end }}
   </section>
 
   {{- with $p.disciplines }}

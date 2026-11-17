@@ -5,6 +5,7 @@
 $kd-ink: #0b0b0d;
 $kd-paper: #f2ede4;
 $kd-vermilion: #d7322d;
+$kd-surface: mix($kd-paper, $kd-ink, 5%); // raised surfaces on the black page (top bar, menus)
 $kd-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 
 // Site font: Jost with Latin Extended, self-hosted like on nitenichiryu.cz. The theme ships Jost in Latin only,
@@ -422,15 +423,16 @@ a.lang-switch__link--current {
     }
 }
 
-// Top bar. The blur stays desktop-only: backdrop-filter would make .navbar the containing block for the fixed offcanvas menu inside it.
+// Top bar: a slightly lighter surface than the page (5 % towards paper), so the page is not one flat black.
+// The blur stays desktop-only: backdrop-filter would make .navbar the containing block for the fixed offcanvas menu inside it.
 @include color-mode(dark) {
     .navbar {
         min-height: 4.5rem;
-        background-color: $kd-ink;
+        background-color: $kd-surface;
         border-bottom: 1px solid rgba($kd-paper, 0.1);
 
         @include media-breakpoint-up(lg) {
-            background-color: rgba($kd-ink, 0.8);
+            background-color: rgba($kd-surface, 0.88);
             -webkit-backdrop-filter: blur(14px) saturate(140%);
             backdrop-filter: blur(14px) saturate(140%);
         }
@@ -519,7 +521,7 @@ a.lang-switch__link--current {
         .navbar .dropdown-menu {
             margin-top: 0.5rem;
             padding: 0.375rem;
-            background-color: $kd-ink;
+            background-color: $kd-surface;
             outline: 1px solid rgba($kd-paper, 0.12);
         }
 
@@ -764,7 +766,7 @@ a.lang-switch__link--current {
 // and shows through a soft circle that fades to black. Wide screens only.
 .branch-hero__art {
     flex-shrink: 0;
-    width: #{"clamp(16rem, 36vw, 32rem)"};
+    width: #{"clamp(14rem, 31vw, 27rem)"};
     height: auto;
     -webkit-mask-image: radial-gradient(circle closest-side at 50% 50%, #000 85%, transparent 100%);
     mask-image: radial-gradient(circle closest-side at 50% 50%, #000 85%, transparent 100%);
