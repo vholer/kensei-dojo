@@ -78,17 +78,23 @@
       <a class="branch-section__more" href="{{ .url }}">{{ .label }} <span aria-hidden="true">→</span></a>
       {{- end }}
     </div>
-    <ol class="branch-week">
-      {{- range index site.Data.schedule site.Language.Lang }}
-      <li class="branch-week__day{{ if not .sessions }} branch-week__day--rest{{ end }}">
-        <span class="branch-week__name"><abbr title="{{ .day }}">{{ .short }}</abbr></span>
-        {{- range .sessions }}
+    {{- /* The nearest training is marked by next-training.js (data-weekday: 0 = Monday) */}}
+    {{- $labels := cond (eq site.Language.Lang "cs")
+      (dict "now" "Právě teď" "today" "Dnes" "tomorrow" "Zítra" "next" "Nejbližší")
+      (dict "now" "Práve teraz" "today" "Dnes" "tomorrow" "Zajtra" "next" "Najbližší") }}
+    <ol class="branch-week" data-labels="{{ jsonify $labels }}">
+      {{- range $i, $d := index site.Data.schedule site.Language.Lang }}
+      <li class="branch-week__day{{ if not $d.sessions }} branch-week__day--rest{{ end }}" data-weekday="{{ $i }}">
+        <span class="branch-week__name"><abbr title="{{ $d.day }}">{{ $d.short }}</abbr></span>
+        {{- range $d.sessions }}
+        {{- $times := split (replace .time " " "") "–" }}
         <span class="branch-week__what">{{ .what }}</span>
-        <span class="branch-week__time">{{ .time }}</span>
+        <span class="branch-week__time" data-start="{{ index $times 0 }}" data-end="{{ index $times 1 }}">{{ .time }}</span>
         {{- end }}
       </li>
       {{- end }}
     </ol>
+    {{- with resources.Get "js/next-training.js" }}{{ with . | minify | fingerprint }}<script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>{{ end }}{{ end }}
     {{- with .place }}
     <p class="branch-week__place">{{ partial "icon" "map-pin" }}<span>{{ . }}</span></p>
     {{- end }}

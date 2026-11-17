@@ -50,6 +50,7 @@ const purgecss = purgeCSSPlugin({
         'not-content',
         'copy',
         'btn-copy',
+        'is-next', // next-training.js
     ]
 });
 

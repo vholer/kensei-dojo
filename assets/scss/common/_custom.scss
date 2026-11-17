@@ -1532,3 +1532,37 @@ a.lang-switch__link--current {
         transition: none;
     }
 }
+
+// The nearest training in the week strip (assets/js/next-training.js): a red-tinted day with a small label
+.branch-week__day.is-next {
+    position: relative;
+    background: rgba($kd-vermilion, 0.14);
+    box-shadow: inset 0 0 0 1px rgba($kd-vermilion, 0.55);
+
+    &::after {
+        content: attr(data-next-label);
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: 0.1rem 0.4rem;
+        border-radius: 2px;
+        background: $kd-vermilion;
+        color: #fff;
+        font-size: 0.625rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        line-height: 1.4;
+        text-transform: uppercase;
+    }
+
+    @include media-breakpoint-down(md) {
+        box-shadow:
+            inset 2px 0 0 $kd-vermilion,
+            inset 0 0 0 1px rgba($kd-vermilion, 0.55);
+
+        &::after {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+}
