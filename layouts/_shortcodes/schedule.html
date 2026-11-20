@@ -1,14 +1,2 @@
-{{- /* Training schedule table for the page's language, from data/schedule.yaml. Headings: {{< schedule day="Deň" time="Čas" what="Náplň" >}} */ -}}
-<table>
-  <thead>
-    <tr><th>{{ .Get "day" }}</th><th>{{ .Get "time" }}</th><th>{{ .Get "what" }}</th></tr>
-  </thead>
-  <tbody>
-    {{- range index site.Data.schedule .Page.Language.Lang }}
-    {{- $day := .day }}
-    {{- range .sessions }}
-    <tr><td>{{ $day }}</td><td>{{ .time }}</td><td>{{ .what }}</td></tr>
-    {{- end }}
-    {{- end }}
-  </tbody>
-</table>
+{{- /* Training week for the page's language as rows, day · time · discipline: {{< schedule >}} */ -}}
+{{ partial "schedule-week" .Page.Language.Lang }}

@@ -17,11 +17,11 @@ params:
 
 ## Přihlášení
 
-Před návštěvou prvního tréniku napiště e-mail na adresu [info.brno@kensei-dojo.com](mailto:info.brno@kensei-dojo.com), aby se s Vámi počítalo. Pro přihlašování na další tréninky používáme portál [kensei.superbanda.cz](https://kensei.superbanda.cz/), kde se zaregistrujte a před každým tréninkem alespoň den předem přihlašte.
+Před prvním tréninkem nám napište na [info.brno@kensei-dojo.com](mailto:info.brno@kensei-dojo.com), ať s vámi můžeme počítat a příp. rezervovat bokken k zapůjčení. Na další tréninky se již přihlašujte přes portál [kensei.superbanda.cz](https://kensei.superbanda.cz/): zaregistrujte se a na každý trénink se přihlaste nejpozději den předem.
 
 ## Čas
 
-{{< schedule day="Den" time="Čas" what="Náplň" >}}
+{{< schedule >}}
 
 ## Místo
 

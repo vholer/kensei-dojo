@@ -1,0 +1,19 @@
+{{- /* The week of trainings for a language (= branch), from data/schedule.yaml, for the trainings page ({{< schedule >}}).
+  Context: the language code. The nearest training is marked by next-training.js (data-weekday: 0 = Monday),
+  which reads the list right before it. */ -}}
+{{- $labels := cond (eq . "cs")
+  (dict "now" "Právě teď" "today" "Dnes" "tomorrow" "Zítra" "next" "Nejbližší")
+  (dict "now" "Práve teraz" "today" "Dnes" "tomorrow" "Zajtra" "next" "Najbližší") }}
+<ol class="branch-week" data-labels="{{ jsonify $labels }}">
+  {{- range $i, $d := index site.Data.schedule . }}
+  <li class="branch-week__day{{ if not $d.sessions }} branch-week__day--rest{{ end }}" data-weekday="{{ $i }}">
+    <span class="branch-week__name">{{ $d.day }}</span>
+    {{- range $d.sessions }}
+    {{- $times := split (replace .time " " "") "–" }}
+    <span class="branch-week__what">{{ .what }}</span>
+    <span class="branch-week__time" data-start="{{ index $times 0 }}" data-end="{{ index $times 1 }}">{{ .time }}</span>
+    {{- end }}
+  </li>
+  {{- end }}
+</ol>
+{{- with resources.Get "js/next-training.js" }}{{ with . | minify | fingerprint }}<script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>{{ end }}{{ end }}

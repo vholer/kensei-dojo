@@ -17,9 +17,7 @@ params:
 
 ## Čas
 
-{{< schedule day="Deň" time="Čas" what="Náplň" >}}
-
-Pozn. pre nadšencov: je možné cvičiť i iné dni, než je vyššie uvedené.
+{{< schedule >}}
 
 ## Miesto
 

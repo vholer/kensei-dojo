@@ -1,5 +1,5 @@
-// Branch main page: mark the nearest training in the week strip, from the visitor's clock.
-// Runs right after the strip (layouts/home.html); data-weekday is 0 = Monday, each time carries data-start/data-end.
+// Week list on the trainings page (layouts/_partials/schedule-week.html): mark the nearest training, from the visitor's clock.
+// Runs right after the list; data-weekday is 0 = Monday, each time carries data-start/data-end.
 (() => {
   const week = document.currentScript && document.currentScript.previousElementSibling;
   if (!week || !week.dataset.labels) return;
@@ -8,8 +8,11 @@
   const today = (now.getDay() + 6) % 7;
   const minutes = now.getHours() * 60 + now.getMinutes();
   const toMinutes = hm => { const [h, m] = hm.split(":").map(Number); return h * 60 + m; };
+  const times = week.querySelectorAll("[data-start]");
+  // With a single training there is nothing to choose from
+  if (times.length < 2) return;
   let best = null;
-  for (const time of week.querySelectorAll("[data-start]")) {
+  for (const time of times) {
     const day = time.closest("[data-weekday]");
     const weekday = Number(day.dataset.weekday);
     const start = toMinutes(time.dataset.start);

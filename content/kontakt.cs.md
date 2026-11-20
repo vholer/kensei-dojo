@@ -19,7 +19,17 @@ params:
 
 {{< contacts >}}
 {{< contact icon="mail" label="E-mail" url="mailto:info.brno@kensei-dojo.com" >}}
+{{< /contacts >}}
+
+## Tréninky
+
+{{< contacts >}}
 {{< contact icon="calendar-check" label="Přihlášení na trénink" url="https://kensei.superbanda.cz/" >}}
+{{< /contacts >}}
+
+## Sociální sítě
+
+{{< contacts >}}
 {{< contact icon="facebook" label="Facebook" url="https://www.facebook.com/kensei.dojo.brno" >}}
 {{< contact icon="instagram" label="Instagram" url="https://www.instagram.com/kensei.dojo.brno" >}}
 {{< /contacts >}}
