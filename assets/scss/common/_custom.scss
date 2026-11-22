@@ -1124,6 +1124,12 @@ a.lang-switch__link--current {
     font-size: 0.9375rem;
     line-height: 1.4;
     list-style: none;
+
+    // Phones: the columns are only as wide as their longest text, shared by all days (subgrid),
+    // so the nearest training's label fits at the end of its row
+    @include media-breakpoint-down(sm) {
+        grid-template-columns: max-content max-content max-content 1fr;
+    }
 }
 
 // The markup has the discipline first; dense flow puts each time back on its discipline's line,
@@ -1137,6 +1143,13 @@ a.lang-switch__link--current {
     padding: 0.625rem;
     background: rgba($kd-paper, 0.035);
     box-shadow: inset 2px 0 0 $kd-vermilion;
+
+    // Browsers without subgrid keep the fixed columns above
+    @include media-breakpoint-down(sm) {
+        grid-column: 1 / -1;
+        grid-template-columns: subgrid;
+        column-gap: 0.6rem;
+    }
 }
 
 .branch-week__day--rest {
@@ -1188,6 +1201,15 @@ a.lang-switch__link--current {
         letter-spacing: 0.1em;
         line-height: 1.4;
         text-transform: uppercase;
+    }
+
+    // Phones: the column gap already separates the label
+    @include media-breakpoint-down(sm) {
+        grid-template-columns: subgrid;
+
+        &::after {
+            margin-left: 0;
+        }
     }
 }
 
