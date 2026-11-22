@@ -756,7 +756,7 @@ a.lang-switch__link--current {
 
     // Phones: more black between the top bar and the title
     @include media-breakpoint-down(md) {
-        padding-top: 5rem;
+        padding-top: 4rem;
     }
 
     @include media-breakpoint-up(lg) {
@@ -821,7 +821,7 @@ a.lang-switch__link--current {
 
     // Phones: more black before the first section title
     @include media-breakpoint-down(md) {
-        margin-top: 4rem;
+        margin-top: 3rem;
     }
 }
 
