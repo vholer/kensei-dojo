@@ -1137,6 +1137,11 @@ a.lang-switch__link--current {
     padding: 0.625rem;
     background: rgba($kd-paper, 0.035);
     box-shadow: inset 2px 0 0 $kd-vermilion;
+
+    // Phones: day and time columns just wide enough for the longest day name and time range
+    @include media-breakpoint-down(sm) {
+        grid-template-columns: 5.5rem 6.5rem 1fr;
+    }
 }
 
 .branch-week__day--rest {
@@ -1188,6 +1193,15 @@ a.lang-switch__link--current {
         letter-spacing: 0.1em;
         line-height: 1.4;
         text-transform: uppercase;
+    }
+
+    // Phones: narrower columns (see .branch-week__day) leave room for the label at the end of the row
+    @include media-breakpoint-down(sm) {
+        grid-template-columns: 5.5rem 6.5rem auto 1fr;
+
+        &::after {
+            margin-left: 0.4rem;
+        }
     }
 }
 
